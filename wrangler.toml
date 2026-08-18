@@ -1,8 +1,3 @@
-name = "mydealtracker"
+name = "mydealtracker-online"
 compatibility_date = "2026-08-18"
 pages_build_output_dir = "."
-
-[[d1_databases]]
-binding = "DB"
-database_name = "mydealtracker-db"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
