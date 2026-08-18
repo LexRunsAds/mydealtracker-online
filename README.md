@@ -1,23 +1,25 @@
-# My Deal Tracker Online - Phase 1
+# My Deal Tracker Online - Phase 1 Updated
 
-This is the first online database version.
+This is the updated online version with login/register and Cloudflare D1 database saving.
 
-## Includes
-- Register / login / logout
-- Cloudflare D1 database saving
-- User-specific deals
-- Monthly goal saving
-- Import old JSON backups
-- Export online backup
-- Current-month stats
-- Search stock numbers across all months
+## Files to upload to GitHub
 
-## Cloudflare Requirements
-- D1 database: `mydealtracker-db`
-- Pages D1 binding: `DB`
-- Tables created using `schema.sql`
+Upload everything in this folder, including:
 
-## Deploy
-Recommended: upload this whole folder to GitHub and connect the GitHub repo to Cloudflare Pages.
+- index.html
+- schema.sql
+- wrangler.toml
+- README.md
+- functions/
 
-Do not upload only `index.html`; this version needs the `functions/` folder too.
+Do not upload the ZIP itself to GitHub. Upload the contents inside the ZIP.
+
+## Cloudflare setup
+
+Your Pages project needs this binding:
+
+- Type: D1 database
+- Variable name: DB
+- Database: mydealtracker-db
+
+After uploading these files to GitHub, Cloudflare should redeploy automatically.

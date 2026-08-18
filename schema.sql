@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS users (
   password_hash TEXT NOT NULL,
   created_at TEXT DEFAULT CURRENT_TIMESTAMP
 );
+
 CREATE TABLE IF NOT EXISTS sessions (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL,
@@ -12,6 +13,7 @@ CREATE TABLE IF NOT EXISTS sessions (
   created_at TEXT DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
 CREATE TABLE IF NOT EXISTS deals (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL,
@@ -33,6 +35,7 @@ CREATE TABLE IF NOT EXISTS deals (
   updated_at TEXT,
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
 CREATE TABLE IF NOT EXISTS user_settings (
   user_id TEXT PRIMARY KEY,
   monthly_goal INTEGER DEFAULT 15,
