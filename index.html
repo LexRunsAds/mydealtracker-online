@@ -102,23 +102,43 @@
 
     .topbar-badges {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
     .topbar-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.14);
-      color: rgba(255,255,255,.92);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-width: 170px;
+      padding: 11px 14px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.08));
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.96);
+      box-shadow: 0 10px 24px rgba(0,0,0,.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar-badge strong {
+      display: block;
       font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .05em;
+      font-weight: 950;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      backdrop-filter: blur(8px);
+      color: #fff;
+      margin-bottom: 3px;
+    }
+
+    .topbar-badge small {
+      display: block;
+      font-size: 12px;
+      line-height: 1.35;
+      color: rgba(255,255,255,.72);
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 700;
     }
 
     .top-actions {
@@ -217,45 +237,222 @@
     .panel-body { padding: 18px; }
 
     .auth-wrap {
-      max-width: 520px;
-      margin: 38px auto 0;
+      max-width: 1260px;
+      margin: 34px auto 0;
+    }
+
+    .auth-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, 460px);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .auth-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 540px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 42px 40px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top center, rgba(255,255,255,.14), transparent 30%),
+        linear-gradient(135deg, #0f172a 0%, #172554 52%, #1e3a8a 100%);
+      color: #fff;
+      box-shadow: 0 22px 48px rgba(15, 23, 42, .18);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .auth-hero:before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      top: -60px;
+      right: -40px;
+    }
+
+    .auth-hero:after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(212,166,70,.10);
+      bottom: -70px;
+      left: -40px;
+    }
+
+    .auth-kicker {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-self: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      margin-bottom: 18px;
+    }
+
+    .auth-hero h2 {
+      position: relative;
+      z-index: 1;
+      margin: 0 auto;
+      max-width: 760px;
+      font-size: 46px;
+      line-height: 1.04;
+      letter-spacing: -.05em;
+    }
+
+    .auth-hero p {
+      position: relative;
+      z-index: 1;
+      margin: 16px auto 0;
+      max-width: 760px;
+      color: rgba(255,255,255,.82);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .auth-feature-row {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .auth-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    .auth-feature-icon {
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(212,166,70,.90), rgba(255,255,255,.24));
+      color: #fff;
+      font-weight: 900;
+      font-size: 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,.18);
+    }
+
+    .auth-feature strong {
+      display: block;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .01em;
+      margin-bottom: 4px;
+    }
+
+    .auth-feature small {
+      display: block;
+      color: rgba(255,255,255,.78);
+      font-size: 12px;
+      line-height: 1.5;
     }
 
     .auth-card {
-      padding: 24px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 540px;
+      border-radius: 28px;
+      box-shadow: 0 20px 44px rgba(15, 23, 42, .10);
     }
 
-    .auth-card h2 {
-      margin: 0 0 6px;
-      font-size: 28px;
-      letter-spacing: -.04em;
+    .auth-card-header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .auth-card-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #eff4ff;
+      color: #1e40af;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 14px;
+    }
+
+    .auth-card h3 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -.05em;
+      color: var(--navy);
     }
 
     .auth-card p {
-      margin: 0 0 18px;
+      margin: 0 auto;
+      max-width: 360px;
       color: var(--muted);
-      line-height: 1.45;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .auth-submit {
+      margin-top: 4px;
+      min-height: 50px;
+      font-size: 15px;
+      letter-spacing: .01em;
     }
 
     .auth-toggle {
       display: flex;
       gap: 8px;
-      margin-bottom: 16px;
-      background: #f1f6ff;
+      margin: 0 auto 18px;
+      background: #f3f6fb;
       padding: 6px;
-      border-radius: 14px;
+      border-radius: 16px;
+      max-width: 320px;
+      border: 1px solid #e3ebf7;
     }
 
     .auth-toggle button {
       flex: 1;
       background: transparent;
       color: #50617a;
+      min-height: 44px;
+      font-size: 14px;
     }
 
     .auth-toggle button.active {
       background: white;
       color: var(--blue);
-      box-shadow: 0 6px 16px rgba(16,42,82,.08);
+      box-shadow: 0 8px 18px rgba(16,42,82,.08);
     }
 
     .goal-card {
@@ -646,12 +843,17 @@
       font-size: 13px;
       font-weight: 800;
       min-height: 18px;
+      text-align: center;
     }
 
     .hidden { display: none !important; }
 
     @media (max-width: 1180px) {
       .entry-panel .panel-body { grid-template-columns: 1fr; }
+      .auth-shell { grid-template-columns: 1fr; }
+      .auth-hero,
+      .auth-card { min-height: auto; }
+      .auth-feature-row { grid-template-columns: 1fr; }
       .deal-card { grid-template-columns: minmax(180px, .8fr) minmax(220px, 1fr) minmax(220px, 1fr); }
       .card-actions {
         grid-column: 1 / -1;
@@ -670,10 +872,16 @@
       }
       .topbar, .top-actions { flex-direction: column; }
       .brand-wrap { width: 100%; min-width: 0; }
-      .topbar-badges { width: 100%; }
+      .topbar-badges { width: 100%; grid-template-columns: 1fr; }
       .top-actions, .top-actions button { width: 100%; }
       .user-chip { max-width: none; width: 100%; }
       .dashboard { gap: 12px; margin-top: 12px; }
+      .auth-shell { grid-template-columns: 1fr; gap: 14px; }
+      .auth-hero,
+      .auth-card { min-height: auto; padding: 24px 18px; border-radius: 22px; }
+      .auth-hero h2 { font-size: 32px; }
+      .auth-hero p { font-size: 15px; }
+      .auth-feature-row { grid-template-columns: 1fr; gap: 10px; }
       .two, .check-grid, .stats, .list-tools { grid-template-columns: 1fr; }
       .deal-card { grid-template-columns: 1fr; }
       .card-actions button { flex: 1; }
@@ -693,9 +901,9 @@
         </div>
 
         <div class="topbar-badges">
-          <span class="topbar-badge">Cloud Sync</span>
-          <span class="topbar-badge">Secure Login</span>
-          <span class="topbar-badge">Monthly Goal Tracking</span>
+          <span class="topbar-badge"><strong>Cloud Sync</strong><small>Access your deals anywhere</small></span>
+          <span class="topbar-badge"><strong>Secure Login</strong><small>Protected user accounts</small></span>
+          <span class="topbar-badge"><strong>Monthly Goals</strong><small>Track paid unit performance</small></span>
         </div>
       </div>
 
@@ -709,34 +917,71 @@
     </header>
 
     <section class="auth-wrap" id="authView">
-      <div class="panel auth-card">
-        <h2>Login to My Deal Tracker</h2>
-        <p>Create an account or log in to manage sold deals, deliveries, paid units, and monthly performance from any device.</p>
+      <div class="auth-shell">
+        <div class="auth-hero">
+          <div class="auth-kicker">Modern Dealership Tool</div>
+          <h2>Sell smarter. Track every deal with confidence.</h2>
+          <p>My Deal Tracker gives sales professionals a cleaner way to manage sold deals, delivery progress, paid units, and monthly performance — all in one premium workspace.</p>
 
-        <div class="auth-toggle">
-          <button type="button" id="loginTab" class="active">Login</button>
-          <button type="button" id="registerTab">Register</button>
+          <div class="auth-feature-row">
+            <div class="auth-feature">
+              <span class="auth-feature-icon">↗</span>
+              <div>
+                <strong>Deal Visibility</strong>
+                <small>Track sold, delivered, pending, and paid deals with clarity.</small>
+              </div>
+            </div>
+
+            <div class="auth-feature">
+              <span class="auth-feature-icon">✓</span>
+              <div>
+                <strong>Delivery Workflow</strong>
+                <small>Stay on top of checklist items, inspection, detail, and registration.</small>
+              </div>
+            </div>
+
+            <div class="auth-feature">
+              <span class="auth-feature-icon">◈</span>
+              <div>
+                <strong>Monthly Performance</strong>
+                <small>Measure paid unit progress and performance goals in real time.</small>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <form id="authForm" class="form-grid">
-          <div id="nameField" class="hidden">
-            <label for="authName">Name</label>
-            <input type="text" id="authName" placeholder="Your name" />
+        <div class="panel auth-card">
+          <div class="auth-card-header">
+            <div class="auth-card-badge">Secure Account Access</div>
+            <h3>Welcome Back</h3>
+            <p>Log in to your dashboard or create a new account to access your sales workspace.</p>
           </div>
 
-          <div>
-            <label for="authEmail">Email</label>
-            <input type="email" id="authEmail" placeholder="you@email.com" required />
+          <div class="auth-toggle">
+            <button type="button" id="loginTab" class="active">Login</button>
+            <button type="button" id="registerTab">Register</button>
           </div>
 
-          <div>
-            <label for="authPassword">Password</label>
-            <input type="password" id="authPassword" placeholder="Minimum 8 characters" required />
-          </div>
+          <form id="authForm" class="form-grid">
+            <div id="nameField" class="hidden">
+              <label for="authName">Name</label>
+              <input type="text" id="authName" placeholder="Your name" />
+            </div>
 
-          <button type="submit" class="btn-primary" id="authSubmit">Login</button>
-          <div class="status-msg" id="authMsg"></div>
-        </form>
+            <div>
+              <label for="authEmail">Email</label>
+              <input type="email" id="authEmail" placeholder="you@email.com" required />
+            </div>
+
+            <div>
+              <label for="authPassword">Password</label>
+              <input type="password" id="authPassword" placeholder="Minimum 8 characters" required />
+            </div>
+
+            <button type="submit" class="btn-primary auth-submit" id="authSubmit">Login</button>
+            <div class="status-msg" id="authMsg"></div>
+          </form>
+        </div>
       </div>
     </section>
 
