@@ -50,3 +50,14 @@ This version keeps Security Update v1 and refreshes the front/login page into a 
 - Clear explanation for why this tool belongs next to the CRM.
 - Stronger feature/value cards.
 - Better mobile and desktop landing layout.
+
+
+## Futuristic dark theme refresh
+
+This version keeps the current login/security/backend functionality and changes the visual theme to a darker,
+futuristic interface inspired by the style reference you shared:
+- dark glassmorphism panels
+- monochrome / graphite feel
+- stronger contrast
+- futuristic hero section
+- dashboard cards styled to match the landing page

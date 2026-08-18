@@ -1385,6 +1385,423 @@
       }
     }
 
+  
+    /* Futuristic dark premium theme */
+    :root {
+      --bg: #06080d;
+      --card: #0b0f15;
+      --ink: #eef2f8;
+      --muted: #9ea7b8;
+      --line: rgba(255,255,255,.10);
+      --blue: #d9e2f3;
+      --blue-2: #f4f7fb;
+      --navy: #040608;
+      --cyan: #bfc8d8;
+      --green: #7ee5be;
+      --orange: #ffd27b;
+      --red: #ff8d8d;
+      --shadow: 0 24px 60px rgba(0, 0, 0, .35);
+    }
+
+    body {
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255,255,255,.055), transparent 24%),
+        radial-gradient(circle at 85% 12%, rgba(255,255,255,.035), transparent 22%),
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.03), transparent 40%),
+        linear-gradient(180deg, #020304 0%, #06080d 40%, #0a0d14 100%);
+    }
+
+    .shell {
+      max-width: 1420px;
+      padding: 18px 20px 28px;
+    }
+
+    .topbar {
+      background: linear-gradient(180deg, rgba(10,12,18,.96), rgba(6,8,13,.92));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 18px 48px rgba(0,0,0,.28);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topbar:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 46px 46px;
+      opacity: .45;
+      pointer-events: none;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,.35));
+    }
+
+    .brand-wrap,
+    .top-actions {
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-eyebrow {
+      color: rgba(255,255,255,.62);
+    }
+
+    .brand h1 {
+      color: #f7f9fc;
+      font-size: 26px;
+      letter-spacing: -.06em;
+    }
+
+    .brand span {
+      color: rgba(255,255,255,.68);
+      font-weight: 700;
+    }
+
+    .user-chip,
+    .top-actions .btn-dark,
+    .top-actions .btn-red {
+      color: #eef2f8;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    }
+
+    .top-actions .btn-soft {
+      color: #05070b;
+      background: linear-gradient(180deg, #f6f8fc, #d8e0ee);
+      border: 1px solid rgba(255,255,255,.26);
+      box-shadow: 0 10px 28px rgba(255,255,255,.10);
+    }
+
+    button:hover {
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+    }
+
+    .auth-wrap {
+      max-width: 1420px;
+      margin: 20px auto 0;
+    }
+
+    .landing-hero {
+      grid-template-columns: minmax(0, 1.12fr) minmax(380px, 470px);
+      gap: 20px;
+    }
+
+    .hero-copy {
+      background:
+        radial-gradient(circle at 35% 38%, rgba(255,255,255,.05), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        linear-gradient(135deg, #040507 0%, #090b11 48%, #10141e 100%);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 28px 72px rgba(0,0,0,.36);
+      min-height: 640px;
+    }
+
+    .hero-copy:before {
+      background:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(90deg, rgba(0,0,0,.9), rgba(0,0,0,.2));
+    }
+
+    .hero-copy:after {
+      width: 420px;
+      height: 420px;
+      right: -80px;
+      bottom: -100px;
+      border-radius: 999px;
+      background:
+        repeating-radial-gradient(circle at center, rgba(255,255,255,.20) 0 2px, transparent 2px 10px),
+        radial-gradient(circle at center, rgba(255,255,255,.08), transparent 60%);
+      opacity: .55;
+      filter: blur(.2px);
+    }
+
+    .hero-label {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.82);
+      box-shadow: 0 10px 24px rgba(0,0,0,.20);
+    }
+
+    .hero-copy h2 {
+      color: #fbfcfe;
+      font-size: clamp(48px, 6vw, 82px);
+      line-height: .90;
+      max-width: 820px;
+      text-shadow: 0 8px 24px rgba(0,0,0,.16);
+    }
+
+    .hero-lead {
+      color: rgba(255,255,255,.72);
+      max-width: 760px;
+      font-weight: 600;
+    }
+
+    .hero-button.primary {
+      background: linear-gradient(180deg, #ffffff, #dfe6f2);
+      color: #05070a;
+      box-shadow: 0 14px 28px rgba(255,255,255,.10);
+    }
+
+    .hero-button.secondary {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.11);
+      color: #f3f6fb;
+      box-shadow: 0 14px 28px rgba(0,0,0,.16);
+    }
+
+    .trust-row div {
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    .trust-row strong {
+      color: #f8fbff;
+    }
+
+    .trust-row small {
+      color: rgba(255,255,255,.62);
+    }
+
+    .panel,
+    .auth-card,
+    .why-section {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.022), rgba(255,255,255,.012)),
+        var(--card);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 22px 56px rgba(0,0,0,.28);
+      backdrop-filter: blur(16px);
+    }
+
+    .auth-card {
+      min-height: 640px;
+      border-radius: 34px;
+    }
+
+    .auth-card-header h3,
+    .section-heading h2,
+    .panel h2,
+    .customer-name,
+    .goal-number,
+    .stat strong {
+      color: #f7f9fd;
+    }
+
+    .auth-card-badge,
+    .why-number {
+      background: rgba(255,255,255,.06);
+      color: #f7f9fd;
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .auth-card p,
+    .section-heading p,
+    .panel-sub,
+    .customer-meta,
+    .notes,
+    .site-credit,
+    .section-title span,
+    .footnote,
+    .empty,
+    .goal-meta {
+      color: var(--muted);
+    }
+
+    .auth-toggle {
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .auth-toggle button {
+      color: #9ea7b8;
+    }
+
+    .auth-toggle button.active {
+      background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.07));
+      color: #ffffff;
+      box-shadow: 0 12px 24px rgba(0,0,0,.18);
+    }
+
+    label {
+      color: rgba(255,255,255,.78);
+    }
+
+    input, select, textarea {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      color: #f5f7fb;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255,255,255,.34);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(255,255,255,.30);
+      box-shadow: 0 0 0 4px rgba(255,255,255,.06);
+    }
+
+    select option {
+      background: #0b0f15;
+      color: #eef2f8;
+    }
+
+    .why-card,
+    .stat,
+    .check,
+    .deal-card,
+    .empty {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        #0d121a;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 14px 34px rgba(0,0,0,.18);
+    }
+
+    .why-card h3,
+    .section-title,
+    .stat span,
+    .check,
+    .site-credit a {
+      color: #f3f6fb;
+    }
+
+    .why-card p,
+    .stat span,
+    .check,
+    .empty {
+      color: var(--muted);
+    }
+
+    .numbers-card,
+    .goal-card {
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.10), transparent 28%),
+        linear-gradient(135deg, #080b10 0%, #111725 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 24px 60px rgba(0,0,0,.32);
+    }
+
+    .numbers-card strong,
+    .numbers-card span {
+      color: #fff;
+    }
+
+    .goal-track {
+      background: rgba(255,255,255,.09);
+    }
+
+    .goal-bar {
+      background: linear-gradient(90deg, #f5f8fd, #cfd7e8);
+    }
+
+    .stat strong {
+      margin-top: 10px;
+    }
+
+    .check input {
+      accent-color: #eef3fb;
+    }
+
+    .section-title {
+      color: rgba(255,255,255,.75);
+    }
+
+    .previous-pending,
+    .global-search-results {
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .pill-blue {
+      background: rgba(220,230,245,.11);
+      color: #e7edf8;
+      border-color: rgba(220,230,245,.18);
+    }
+
+    .pill-green {
+      background: rgba(126,229,190,.12);
+      color: #9ff1cf;
+      border-color: rgba(126,229,190,.18);
+    }
+
+    .pill-orange {
+      background: rgba(255,210,123,.12);
+      color: #ffe0a6;
+      border-color: rgba(255,210,123,.18);
+    }
+
+    .pill-red {
+      background: rgba(255,141,141,.12);
+      color: #ffb0b0;
+      border-color: rgba(255,141,141,.18);
+    }
+
+    .pill-gray,
+    .mini-chip {
+      background: rgba(255,255,255,.04);
+      color: #b8c1d1;
+      border-color: rgba(255,255,255,.08);
+    }
+
+    .mini-chip.ok {
+      background: rgba(126,229,190,.12);
+      color: #9ff1cf;
+      border-color: rgba(126,229,190,.18);
+    }
+
+    .card-actions {
+      border-top-color: rgba(255,255,255,.08);
+    }
+
+    .site-credit {
+      color: rgba(255,255,255,.52);
+    }
+
+    .site-credit a {
+      color: #ffffff;
+    }
+
+    @media (max-width: 1180px) {
+      .landing-hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-copy,
+      .auth-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        padding: 10px;
+      }
+      .hero-copy {
+        min-height: auto;
+        padding: 30px 22px;
+      }
+      .hero-copy h2 {
+        font-size: 44px;
+      }
+      .hero-lead {
+        font-size: 15px;
+      }
+      .auth-card {
+        padding: 22px 18px;
+      }
+      .why-section {
+        padding: 26px 18px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1412,15 +1829,16 @@
     <section class="auth-wrap" id="authView">
       <div class="landing-hero">
         <div class="hero-copy">
-          <div class="hero-label">Dealership Deal Management</div>
+          <div class="hero-label">Futuristic Deal Management</div>
           <h2>
-            <span>Your Deals.</span>
-            <span>Your Deliveries.</span>
-            <span>Your Month.</span>
+            <span>Track Every</span>
+            <span>Sold Deal with</span>
+            <span>Clarity.</span>
           </h2>
           <p class="hero-lead">
-            Stay organized after the sale. Track what has been completed, what still needs attention,
-            and what has to happen before the deal is fully finalized.
+            Built for sales professionals who need more than a CRM. My Deal Tracker gives you a clean,
+            modern workspace to see what has been done, what still needs action, and what must happen
+            before a deal is fully delivered and paid.
           </p>
 
           <div class="hero-actions">
@@ -1430,16 +1848,16 @@
 
           <div class="trust-row">
             <div>
-              <strong>Built apart from your CRM</strong>
-              <small>Simple enough to actually use every day.</small>
+              <strong>Not another CRM</strong>
+              <small>A faster daily control center for sold deals.</small>
             </div>
             <div>
-              <strong>Delivery checklist focused</strong>
-              <small>Know what is done and what is missing.</small>
+              <strong>Execution focused</strong>
+              <small>See exactly what is complete and what is still open.</small>
             </div>
             <div>
-              <strong>Monthly paid unit tracking</strong>
-              <small>Keep your goal in front of you.</small>
+              <strong>Performance visibility</strong>
+              <small>Keep your paid-unit goal visible every day.</small>
             </div>
           </div>
         </div>
