@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Deal Tracker Online</title>
+  <title>My Deal Tracker | Dealership Sales Dashboard</title>
   <style>
     :root {
       --bg: #f4f7fb;
@@ -11,14 +11,15 @@
       --ink: #172033;
       --muted: #6b7890;
       --line: #dce5f2;
-      --blue: #1463ff;
-      --blue-2: #0f4fd1;
-      --navy: #0b1f3a;
-      --cyan: #00a7e1;
-      --green: #10a66a;
-      --orange: #f59e0b;
-      --red: #e5484d;
-      --shadow: 0 14px 35px rgba(16, 42, 82, .10);
+      --blue: #1d4ed8;
+      --blue-2: #163ea9;
+      --navy: #0f172a;
+      --cyan: #0891b2;
+      --green: #0f9f6e;
+      --orange: #d97706;
+      --red: #dc2626;
+      --gold: #d4a646;
+      --shadow: 0 18px 42px rgba(15, 23, 42, .10);
       --radius: 18px;
     }
 
@@ -29,8 +30,8 @@
       min-height: 100vh;
       color: var(--ink);
       background:
-        radial-gradient(circle at top right, rgba(20, 99, 255, .14), transparent 34%),
-        linear-gradient(180deg, #ffffff 0%, var(--bg) 44%, #eef3f9 100%);
+        radial-gradient(circle at top right, rgba(15, 23, 42, .08), transparent 35%),
+        linear-gradient(180deg, #f9fbfd 0%, var(--bg) 44%, #eef3f8 100%);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
@@ -44,16 +45,23 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      background: rgba(255, 255, 255, .85);
-      border: 1px solid rgba(220, 229, 242, .9);
+      gap: 22px;
+      background: linear-gradient(135deg, #0f172a 0%, #172554 58%, #1e3a8a 100%);
+      border: 1px solid rgba(15, 23, 42, .22);
       border-radius: 24px;
-      padding: 14px 16px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
+      padding: 18px 20px;
+      box-shadow: 0 18px 44px rgba(15, 23, 42, .22);
       position: sticky;
       top: 12px;
       z-index: 20;
+    }
+
+    .brand-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 320px;
+      flex: 1;
     }
 
     .brand {
@@ -63,34 +71,54 @@
       min-width: 220px;
     }
 
-    .logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--blue), var(--cyan));
-      color: #fff;
-      font-weight: 950;
-      display: grid;
-      place-items: center;
-      letter-spacing: -.04em;
-      box-shadow: 0 12px 28px rgba(20, 99, 255, .28);
+    .brand-eyebrow {
+      display: inline-block;
+      color: rgba(255,255,255,.72);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      margin-bottom: 6px;
     }
 
     .brand h1 {
       margin: 0;
-      font-size: 21px;
-      letter-spacing: -.04em;
+      font-size: 28px;
+      letter-spacing: -.045em;
       line-height: 1;
+      color: #ffffff;
     }
 
     .brand span {
       display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
+      margin-top: 7px;
+      color: rgba(255,255,255,.78);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.45;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .topbar-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .topbar-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .05em;
       text-transform: uppercase;
-      letter-spacing: .08em;
+      backdrop-filter: blur(8px);
     }
 
     .top-actions {
@@ -99,6 +127,24 @@
       align-items: center;
       flex-wrap: wrap;
       justify-content: flex-end;
+    }
+
+    .user-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      max-width: 260px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     button {
@@ -118,12 +164,12 @@
       box-shadow: 0 8px 18px rgba(16, 42, 82, .12);
     }
 
-    .btn-primary { background: var(--blue); color: #fff; }
-    .btn-primary:hover { background: var(--blue-2); }
-    .btn-soft { background: #eaf1ff; color: #174ea6; }
-    .btn-dark { background: var(--navy); color: #fff; }
-    .btn-green { background: #e8fbf3; color: #08784a; }
-    .btn-red { background: #fff0f0; color: #b42328; }
+    .btn-primary { background: linear-gradient(135deg, var(--blue), #2563eb); color: #fff; }
+    .btn-primary:hover { background: linear-gradient(135deg, var(--blue-2), #1d4ed8); }
+    .btn-soft { background: #eef4ff; color: #1e40af; }
+    .btn-dark { background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.14); }
+    .btn-green { background: #eafaf3; color: #0b7b54; }
+    .btn-red { background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.14); }
 
     .dashboard {
       display: grid;
@@ -141,8 +187,8 @@
     }
 
     .panel {
-      background: rgba(255, 255, 255, .94);
-      border: 1px solid rgba(220, 229, 242, .95);
+      background: rgba(255, 255, 255, .97);
+      border: 1px solid rgba(220, 229, 242, .96);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
@@ -623,7 +669,10 @@
         align-items: flex-start;
       }
       .topbar, .top-actions { flex-direction: column; }
+      .brand-wrap { width: 100%; min-width: 0; }
+      .topbar-badges { width: 100%; }
       .top-actions, .top-actions button { width: 100%; }
+      .user-chip { max-width: none; width: 100%; }
       .dashboard { gap: 12px; margin-top: 12px; }
       .two, .check-grid, .stats, .list-tools { grid-template-columns: 1fr; }
       .deal-card { grid-template-columns: 1fr; }
@@ -634,16 +683,24 @@
 <body>
   <main class="shell">
     <header class="topbar">
-      <div class="brand">
-        <div class="logo">MD</div>
-        <div>
-          <h1>My Deal Tracker</h1>
-          <span>Online Sold Deal Dashboard</span>
+      <div class="brand-wrap">
+        <div class="brand">
+          <div>
+            <div class="brand-eyebrow">Dealership Sales Workspace</div>
+            <h1>My Deal Tracker</h1>
+            <span>Professional deal tracking, delivery management, and monthly performance reporting.</span>
+          </div>
+        </div>
+
+        <div class="topbar-badges">
+          <span class="topbar-badge">Cloud Sync</span>
+          <span class="topbar-badge">Secure Login</span>
+          <span class="topbar-badge">Monthly Goal Tracking</span>
         </div>
       </div>
 
       <div class="top-actions hidden" id="loggedInActions">
-        <span id="userBadge" class="pill pill-blue"></span>
+        <span id="userBadge" class="user-chip"></span>
         <button type="button" class="btn-dark" id="exportBtn">Export Backup</button>
         <button type="button" class="btn-soft" id="importBtn">Import Backup</button>
         <button type="button" class="btn-red" id="logoutBtn">Logout</button>
@@ -654,7 +711,7 @@
     <section class="auth-wrap" id="authView">
       <div class="panel auth-card">
         <h2>Login to My Deal Tracker</h2>
-        <p>Create an account or login to save your sold deals online and access them from any device.</p>
+        <p>Create an account or log in to manage sold deals, deliveries, paid units, and monthly performance from any device.</p>
 
         <div class="auth-toggle">
           <button type="button" id="loginTab" class="active">Login</button>
@@ -820,7 +877,7 @@
     </section>
 
     <footer class="site-credit">
-      Built By <a href="https://LexRunsAds.com" target="_blank" rel="noopener">LexRunsAds.com</a>
+      Platform Design By <a href="https://LexRunsAds.com" target="_blank" rel="noopener">LexRunsAds.com</a>
     </footer>
   </main>
 
