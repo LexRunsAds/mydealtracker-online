@@ -964,17 +964,17 @@
           <form id="authForm" class="form-grid">
             <div id="nameField" class="hidden">
               <label for="authName">Name</label>
-              <input type="text" id="authName" placeholder="Your name" />
+              <input type="text" id="authName" placeholder="Your name" maxlength="80" autocomplete="name" />
             </div>
 
             <div>
               <label for="authEmail">Email</label>
-              <input type="email" id="authEmail" placeholder="you@email.com" required />
+              <input type="email" id="authEmail" placeholder="you@email.com" maxlength="254" autocomplete="email" required />
             </div>
 
             <div>
               <label for="authPassword">Password</label>
-              <input type="password" id="authPassword" placeholder="Minimum 8 characters" required />
+              <input type="password" id="authPassword" placeholder="Minimum 8 characters" minlength="8" maxlength="128" autocomplete="current-password" required />
             </div>
 
             <button type="submit" class="btn-primary auth-submit" id="authSubmit">Login</button>
@@ -1005,7 +1005,7 @@
                 </div>
                 <div>
                   <label for="stockNumber">Stock #</label>
-                  <input type="text" id="stockNumber" placeholder="ex: M12345" />
+                  <input type="text" id="stockNumber" placeholder="ex: M12345" maxlength="40" />
                 </div>
               </div>
 
@@ -1019,7 +1019,7 @@
 
               <div>
                 <label for="customerName">Customer Name</label>
-                <input type="text" id="customerName" placeholder="Customer name" required />
+                <input type="text" id="customerName" placeholder="Customer name" maxlength="120" required />
               </div>
 
               <div class="two">
@@ -1053,7 +1053,7 @@
 
               <div>
                 <label for="notes">Notes</label>
-                <textarea id="notes" placeholder="Delivery details, customer requests, issues, etc."></textarea>
+                <textarea id="notes" placeholder="Delivery details, customer requests, issues, etc." maxlength="1000"></textarea>
               </div>
 
               <div class="form-actions">
@@ -1067,7 +1067,7 @@
             <div class="goal-card">
               <div class="goal-top">
                 <label for="goalInput">Monthly Paid Unit Goal</label>
-                <input type="number" id="goalInput" min="1" value="15" />
+                <input type="number" id="goalInput" min="1" max="100" value="15" />
               </div>
               <div class="goal-number" id="goalBig">0 / 15</div>
               <div class="goal-track">
@@ -1189,7 +1189,10 @@
       });
 
       const data = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(data.error || "Something went wrong.");
+      if (!response.ok) {
+        const message = data.error || `Request failed. Status ${response.status}.`;
+        throw new Error(message);
+      }
       return data;
     }
 
@@ -1444,7 +1447,10 @@
     document.getElementById("authForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       const msg = document.getElementById("authMsg");
+      const submit = document.getElementById("authSubmit");
       msg.textContent = "";
+      submit.disabled = true;
+      submit.textContent = authMode === "register" ? "Creating Account..." : "Logging In...";
 
       try {
         const body = {
@@ -1461,6 +1467,9 @@
         await loadAppData();
       } catch (error) {
         msg.textContent = error.message;
+      } finally {
+        submit.disabled = false;
+        submit.textContent = authMode === "register" ? "Create Account" : "Login";
       }
     });
 
@@ -1502,7 +1511,8 @@
     document.getElementById("resetBtn").addEventListener("click", resetForm);
 
     goalInput.addEventListener("change", async function() {
-      state.goal = Math.max(Number(goalInput.value) || 1, 1);
+      state.goal = Math.min(Math.max(Number(goalInput.value) || 1, 1), 100);
+      goalInput.value = state.goal;
       await api("/api/settings", { method: "PUT", body: JSON.stringify({ monthlyGoal: state.goal }) });
       render();
     });
