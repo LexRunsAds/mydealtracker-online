@@ -40,3 +40,13 @@ This package adds the first security layer:
 - D1 binding preserved in `wrangler.toml`.
 
 Security tables are auto-created by the API on first protected request. The same SQL is also included in `security_migration.sql` if you want to run it manually in the D1 console.
+
+
+## LexRunsAds-style landing refresh
+
+This version keeps Security Update v1 and refreshes the front/login page into a more direct-response landing experience:
+- Bigger, bolder hero copy.
+- Sales-focused value proposition.
+- Clear explanation for why this tool belongs next to the CRM.
+- Stronger feature/value cards.
+- Better mobile and desktop landing layout.

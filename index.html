@@ -885,6 +885,506 @@
       .deal-card { grid-template-columns: 1fr; }
       .card-actions button { flex: 1; }
     }
+  
+    /* LexRunsAds-inspired direct-response front page refresh */
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(circle at 16% 6%, rgba(29, 78, 216, .08), transparent 28%),
+        radial-gradient(circle at 82% 12%, rgba(15, 23, 42, .08), transparent 30%),
+        linear-gradient(180deg, #fbfcff 0%, #f4f7fb 48%, #eef3f8 100%);
+    }
+
+    .shell {
+      max-width: 1380px;
+      padding: 18px 20px 26px;
+    }
+
+    .topbar {
+      background: rgba(255,255,255,.84);
+      color: var(--ink);
+      border: 1px solid rgba(220, 229, 242, .95);
+      box-shadow: 0 14px 36px rgba(15, 23, 42, .08);
+      backdrop-filter: blur(16px);
+      border-radius: 22px;
+      padding: 15px 18px;
+    }
+
+    .brand-eyebrow {
+      color: #1d4ed8;
+      letter-spacing: .13em;
+      margin-bottom: 7px;
+    }
+
+    .brand h1 {
+      color: var(--navy);
+      font-size: 24px;
+      letter-spacing: -.055em;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      max-width: 620px;
+    }
+
+    .top-actions .btn-dark,
+    .top-actions .btn-red {
+      color: var(--navy);
+      background: #f2f6fc;
+      border: 1px solid #dce5f2;
+    }
+
+    .top-actions .btn-soft {
+      background: var(--blue);
+      color: #fff;
+      border: 1px solid var(--blue);
+    }
+
+    .user-chip {
+      color: var(--navy);
+      background: #ffffff;
+      border: 1px solid #dce5f2;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .06);
+    }
+
+    .auth-wrap {
+      max-width: 1380px;
+      margin: 18px auto 0;
+    }
+
+    .landing-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(380px, 470px);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      position: relative;
+      overflow: hidden;
+      min-height: 610px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 54px 52px;
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, .94), rgba(30, 58, 138, .94)),
+        radial-gradient(circle at top right, rgba(255,255,255,.16), transparent 38%);
+      color: #fff;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, .18);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .hero-copy:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(90deg, rgba(0,0,0,.86), transparent 94%);
+      pointer-events: none;
+    }
+
+    .hero-copy:after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      right: -110px;
+      bottom: -120px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      filter: blur(2px);
+      pointer-events: none;
+    }
+
+    .hero-copy > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.88);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      margin-bottom: 22px;
+    }
+
+    .hero-copy h2 {
+      margin: 0;
+      font-size: clamp(46px, 6vw, 78px);
+      line-height: .92;
+      letter-spacing: -.07em;
+      max-width: 850px;
+    }
+
+    .hero-copy h2 span {
+      display: block;
+    }
+
+    .hero-lead {
+      margin: 26px 0 0;
+      max-width: 760px;
+      color: rgba(255,255,255,.82);
+      font-size: clamp(17px, 1.55vw, 21px);
+      line-height: 1.6;
+      font-weight: 650;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 950;
+      font-size: 14px;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero-button.primary {
+      background: #fff;
+      color: var(--navy);
+      box-shadow: 0 12px 26px rgba(0,0,0,.18);
+    }
+
+    .hero-button.secondary {
+      background: rgba(255,255,255,.10);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 34px;
+      max-width: 900px;
+    }
+
+    .trust-row div {
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.085);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(8px);
+    }
+
+    .trust-row strong {
+      display: block;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: -.01em;
+      margin-bottom: 5px;
+    }
+
+    .trust-row small {
+      display: block;
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .auth-card {
+      min-height: 610px;
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, .12);
+      border: 1px solid rgba(220, 229, 242, .96);
+    }
+
+    .auth-card-header {
+      text-align: left;
+      margin-bottom: 22px;
+    }
+
+    .auth-card-badge {
+      background: #eef4ff;
+      color: var(--blue);
+      margin-bottom: 18px;
+    }
+
+    .auth-card h3 {
+      font-size: 38px;
+      letter-spacing: -.065em;
+      margin-bottom: 10px;
+    }
+
+    .auth-card p {
+      margin: 0;
+      max-width: none;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .auth-toggle {
+      max-width: none;
+      margin: 0 0 18px;
+      border-radius: 16px;
+      background: #f4f7fb;
+    }
+
+    .auth-toggle button.active {
+      color: var(--navy);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, .08);
+    }
+
+    .auth-submit {
+      min-height: 52px;
+      border-radius: 15px;
+      box-shadow: 0 12px 24px rgba(29,78,216,.18);
+    }
+
+    .why-section {
+      margin-top: 22px;
+      padding: 42px;
+      border-radius: 34px;
+      background: rgba(255,255,255,.90);
+      border: 1px solid rgba(220,229,242,.94);
+      box-shadow: 0 18px 46px rgba(15,23,42,.08);
+    }
+
+    .section-heading {
+      max-width: 850px;
+      margin-bottom: 26px;
+    }
+
+    .section-kicker {
+      color: var(--blue);
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: .98;
+      letter-spacing: -.065em;
+      color: var(--navy);
+    }
+
+    .section-heading p {
+      margin: 15px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+      font-weight: 650;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .why-card {
+      min-height: 250px;
+      padding: 22px;
+      border-radius: 24px;
+      background: #fff;
+      border: 1px solid #e2eaf6;
+      box-shadow: 0 10px 26px rgba(15,23,42,.055);
+    }
+
+    .why-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: #f1f6ff;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 950;
+      margin-bottom: 22px;
+    }
+
+    .why-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.05;
+      letter-spacing: -.045em;
+      color: var(--navy);
+    }
+
+    .why-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 650;
+    }
+
+    .numbers-section {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .numbers-card {
+      padding: 26px;
+      min-height: 150px;
+      border-radius: 28px;
+      background: var(--navy);
+      color: #fff;
+      box-shadow: 0 18px 42px rgba(15,23,42,.14);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .numbers-card:after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 999px;
+      right: -60px;
+      top: -70px;
+      background: rgba(255,255,255,.07);
+    }
+
+    .numbers-card strong {
+      position: relative;
+      z-index: 1;
+      display: block;
+      font-size: 42px;
+      line-height: .95;
+      letter-spacing: -.06em;
+      margin-bottom: 8px;
+    }
+
+    .numbers-card span {
+      position: relative;
+      z-index: 1;
+      color: rgba(255,255,255,.76);
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 1180px) {
+      .landing-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .auth-card {
+        min-height: auto;
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        padding: 10px;
+      }
+
+      .topbar {
+        border-radius: 18px;
+      }
+
+      .brand h1 {
+        font-size: 22px;
+      }
+
+      .brand span {
+        font-size: 12px;
+      }
+
+      .landing-hero {
+        gap: 12px;
+      }
+
+      .hero-copy {
+        padding: 32px 22px;
+        border-radius: 24px;
+      }
+
+      .hero-copy h2 {
+        font-size: 43px;
+      }
+
+      .hero-lead {
+        font-size: 16px;
+      }
+
+      .hero-actions,
+      .hero-button {
+        width: 100%;
+      }
+
+      .trust-row {
+        grid-template-columns: 1fr;
+      }
+
+      .auth-card {
+        padding: 24px 18px;
+        border-radius: 24px;
+      }
+
+      .auth-card-header {
+        text-align: center;
+      }
+
+      .auth-card h3 {
+        font-size: 31px;
+      }
+
+      .why-section {
+        padding: 28px 18px;
+        border-radius: 24px;
+      }
+
+      .why-grid,
+      .numbers-section {
+        grid-template-columns: 1fr;
+      }
+
+      .why-card {
+        min-height: auto;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -893,16 +1393,10 @@
       <div class="brand-wrap">
         <div class="brand">
           <div>
-            <div class="brand-eyebrow">Dealership Sales Workspace</div>
+            <div class="brand-eyebrow">Built for modern sales professionals</div>
             <h1>My Deal Tracker</h1>
-            <span>Professional deal tracking, delivery management, and monthly performance reporting.</span>
+            <span>The follow-up workspace for everything your CRM does not keep simple.</span>
           </div>
-        </div>
-
-        <div class="topbar-badges">
-          <span class="topbar-badge"><strong>Cloud Sync</strong><small>Access your deals anywhere</small></span>
-          <span class="topbar-badge"><strong>Secure Login</strong><small>Protected user accounts</small></span>
-          <span class="topbar-badge"><strong>Monthly Goals</strong><small>Track paid unit performance</small></span>
         </div>
       </div>
 
@@ -916,44 +1410,45 @@
     </header>
 
     <section class="auth-wrap" id="authView">
-      <div class="auth-shell">
-        <div class="auth-hero">
-          <div class="auth-kicker">Modern Dealership Tool</div>
-          <h2>Sell smarter. Track every deal with confidence.</h2>
-          <p>My Deal Tracker gives sales professionals a cleaner way to manage sold deals, delivery progress, paid units, and monthly performance — all in one premium workspace.</p>
+      <div class="landing-hero">
+        <div class="hero-copy">
+          <div class="hero-label">Dealership Deal Management</div>
+          <h2>
+            <span>Your Deals.</span>
+            <span>Your Deliveries.</span>
+            <span>Your Month.</span>
+          </h2>
+          <p class="hero-lead">
+            Stay organized after the sale. Track what has been completed, what still needs attention,
+            and what has to happen before the deal is fully finalized.
+          </p>
 
-          <div class="auth-feature-row">
-            <div class="auth-feature">
-              <span class="auth-feature-icon">↗</span>
-              <div>
-                <strong>Deal Visibility</strong>
-                <small>Track sold, delivered, pending, and paid deals with clarity.</small>
-              </div>
+          <div class="hero-actions">
+            <a class="hero-button primary" href="#login-panel">Start Tracking Deals</a>
+            <a class="hero-button secondary" href="#why-it-works">Why It Helps</a>
+          </div>
+
+          <div class="trust-row">
+            <div>
+              <strong>Built apart from your CRM</strong>
+              <small>Simple enough to actually use every day.</small>
             </div>
-
-            <div class="auth-feature">
-              <span class="auth-feature-icon">✓</span>
-              <div>
-                <strong>Delivery Workflow</strong>
-                <small>Stay on top of checklist items, inspection, detail, and registration.</small>
-              </div>
+            <div>
+              <strong>Delivery checklist focused</strong>
+              <small>Know what is done and what is missing.</small>
             </div>
-
-            <div class="auth-feature">
-              <span class="auth-feature-icon">◈</span>
-              <div>
-                <strong>Monthly Performance</strong>
-                <small>Measure paid unit progress and performance goals in real time.</small>
-              </div>
+            <div>
+              <strong>Monthly paid unit tracking</strong>
+              <small>Keep your goal in front of you.</small>
             </div>
           </div>
         </div>
 
-        <div class="panel auth-card">
+        <div class="panel auth-card" id="login-panel">
           <div class="auth-card-header">
             <div class="auth-card-badge">Secure Account Access</div>
-            <h3>Welcome Back</h3>
-            <p>Log in to your dashboard or create a new account to access your sales workspace.</p>
+            <h3>Access Your Workspace</h3>
+            <p>Log in or create your account to manage sold deals, delivery steps, paid units, and monthly performance.</p>
           </div>
 
           <div class="auth-toggle">
@@ -982,6 +1477,58 @@
           </form>
         </div>
       </div>
+
+      <section class="why-section" id="why-it-works">
+        <div class="section-heading">
+          <div class="section-kicker">Why Salespeople Use It</div>
+          <h2>Because sold does not always mean finished.</h2>
+          <p>
+            Your CRM holds the customer record. My Deal Tracker keeps your personal deal workflow clean,
+            consistent, and easy to review at a glance.
+          </p>
+        </div>
+
+        <div class="why-grid">
+          <article class="why-card">
+            <span class="why-number">01</span>
+            <h3>No more mental notes</h3>
+            <p>Stop relying on memory, sticky notes, or scattered reminders. Every deal has a clear checklist for what has been handled and what still needs to be done.</p>
+          </article>
+
+          <article class="why-card">
+            <span class="why-number">02</span>
+            <h3>Built around finalizing deals</h3>
+            <p>Insurance, gas, registration, inspection, detail, delivery, and paid status are all visible so nothing gets lost after the customer says yes.</p>
+          </article>
+
+          <article class="why-card">
+            <span class="why-number">03</span>
+            <h3>Separate from the CRM</h3>
+            <p>This is your personal control center. It does not replace the CRM — it gives you a faster daily view of what you need to move across the finish line.</p>
+          </article>
+
+          <article class="why-card">
+            <span class="why-number">04</span>
+            <h3>Know your month</h3>
+            <p>Track sold units, delivered units, pending deals, open items, and paid units so your goal is always clear without digging through reports.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="numbers-section">
+        <div class="numbers-card">
+          <strong>1 place</strong>
+          <span>for your active sold deals</span>
+        </div>
+        <div class="numbers-card">
+          <strong>7 checkpoints</strong>
+          <span>to keep the deal moving</span>
+        </div>
+        <div class="numbers-card">
+          <strong>0 guesswork</strong>
+          <span>when reviewing what needs attention</span>
+        </div>
+      </section>
     </section>
 
     <section class="dashboard hidden" id="appView">
