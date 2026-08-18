@@ -1,0 +1,2 @@
+import { json, getCurrentUser } from "../_utils.js";
+export async function onRequestGet(context){const user=await getCurrentUser(context);return json({user})}
