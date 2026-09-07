@@ -112,3 +112,24 @@ Frontend-only update:
 - No database changes.
 - No backend changes.
 - No admin panel.
+
+
+## Keep signed in fix
+
+Safe backend/session update:
+- Extends login sessions from 30 days to 180 days.
+- Adds an explicit cookie Expires value in addition to Max-Age.
+- Refreshes the active session whenever `/api/auth/me` confirms the user is logged in.
+- Compares session expiration using ISO timestamps.
+- No database changes.
+- No admin panel.
+- Existing users and deals stay untouched.
+
+
+## Total Deals Tracked text color fix
+
+Frontend-only update:
+- Changes the Total Deals Tracked chip to dark/black text on desktop.
+- Keeps the keep-signed-in session fix.
+- No database changes.
+- No admin panel.

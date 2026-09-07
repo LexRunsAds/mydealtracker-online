@@ -1,5 +1,5 @@
 const COOKIE_NAME = "mdt_session";
-const SESSION_DAYS = 30;
+const SESSION_DAYS = 180;
 
 const MAX_JSON_BYTES_DEFAULT = 30000;
 
@@ -131,7 +131,8 @@ export function getCookie(request, name = COOKIE_NAME) {
 
 export function sessionCookie(sessionId) {
   const maxAge = SESSION_DAYS * 24 * 60 * 60;
-  return `${COOKIE_NAME}=${sessionId}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`;
+  const expires = new Date(Date.now() + maxAge * 1000).toUTCString();
+  return `${COOKIE_NAME}=${sessionId}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}; Expires=${expires}`;
 }
 
 export function clearSessionCookie() {
@@ -348,8 +349,8 @@ export async function getCurrentUser(context) {
     `SELECT users.id, users.email, users.name
      FROM sessions
      JOIN users ON users.id = sessions.user_id
-     WHERE sessions.id = ? AND sessions.expires_at > datetime('now')`
-  ).bind(sessionId).first();
+     WHERE sessions.id = ? AND sessions.expires_at > ?`
+  ).bind(sessionId, new Date().toISOString()).first();
 }
 
 export async function requireUser(context) {
