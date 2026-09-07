@@ -101,3 +101,14 @@ Frontend-only update:
 - No database changes.
 - No backend changes.
 - No admin panel.
+
+
+## Topbar cleanup + total tracked
+
+Frontend-only update:
+- Removes visible Import Backup and Export Backup buttons from the top account area.
+- Adds a logged-in stat chip: Total Deals Tracked.
+- The total is based on the logged-in user's saved deals.
+- No database changes.
+- No backend changes.
+- No admin panel.

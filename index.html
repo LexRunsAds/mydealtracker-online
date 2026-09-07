@@ -1673,6 +1673,36 @@
       color: #0f172a !important;
     }
 
+  
+    .user-stat-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+      .user-stat-chip {
+        width: 100%;
+        max-width: 100%;
+        min-height: 58px;
+        border-radius: 18px;
+        text-align: center;
+        color: var(--navy);
+        background: #ffffff;
+        border: 1px solid #dce5f2;
+        box-shadow: 0 8px 18px rgba(15, 23, 42, .06);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1690,8 +1720,7 @@
 
       <div class="top-actions hidden" id="loggedInActions">
         <span id="userBadge" class="user-chip"></span>
-        <button type="button" class="btn-dark" id="exportBtn">Export Backup</button>
-        <button type="button" class="btn-soft" id="importBtn">Import Backup</button>
+        <span id="totalDealsTrackedBadge" class="user-stat-chip">Total Deals Tracked: 0</span>
         <button type="button" class="btn-red" id="logoutBtn">Logout</button>
         <input type="file" id="importFile" accept="application/json" style="display:none" />
       </div>
@@ -2212,6 +2241,11 @@
       const deliveredCount = selectedMonthDeals.filter(d => d.delivered || d.status === "Delivered").length;
       const pendingCount = selectedMonthDeals.filter(d => !(d.delivered || d.status === "Delivered")).length;
       const openItems = selectedMonthDeals.reduce((sum, deal) => sum + checklistMissing(deal).length, 0);
+
+      const totalDealsTrackedBadge = document.getElementById("totalDealsTrackedBadge");
+      if (totalDealsTrackedBadge) {
+        totalDealsTrackedBadge.textContent = `Total Deals Tracked: ${state.deals.length}`;
+      }
 
       const goal = Math.max(Number(state.goal) || 1, 1);
       const percent = Math.min(Math.round((paidThisMonth / goal) * 100), 100);
