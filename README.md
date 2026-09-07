@@ -183,3 +183,14 @@ Safe bug fix:
 - No database changes.
 - No admin panel.
 - Existing users and deals stay untouched.
+
+
+## Social share image / Open Graph update
+
+Safe frontend/static update:
+- Adds `og-share-image.png` to the root of the site.
+- Adds Open Graph and Twitter card meta tags to `index.html`.
+- Social/text shares should now show the branded My Deal Tracker preview image.
+- No database changes.
+- No backend changes.
+- No admin panel.
