@@ -122,17 +122,31 @@ export async function verifyPassword(password, storedHash) {
 export function getCookie(request, name = COOKIE_NAME) {
   const cookie = request.headers.get("cookie") || "";
   const parts = cookie.split(";").map(v => v.trim());
+
   for (const part of parts) {
-    const [key, ...valueParts] = part.split("=");
-    if (key === name) return valueParts.join("=");
+    const eq = part.indexOf("=");
+    if (eq === -1) continue;
+
+    const key = part.slice(0, eq);
+    const value = part.slice(eq + 1);
+
+    if (key === name) {
+      try {
+        return decodeURIComponent(value);
+      } catch {
+        return value;
+      }
+    }
   }
+
   return "";
 }
 
 export function sessionCookie(sessionId) {
   const maxAge = SESSION_DAYS * 24 * 60 * 60;
   const expires = new Date(Date.now() + maxAge * 1000).toUTCString();
-  return `${COOKIE_NAME}=${sessionId}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}; Expires=${expires}`;
+  const encoded = encodeURIComponent(sessionId);
+  return `${COOKIE_NAME}=${encoded}; Path=/; Max-Age=${maxAge}; Expires=${expires}; HttpOnly; Secure; SameSite=Lax`;
 }
 
 export function clearSessionCookie() {
@@ -345,12 +359,22 @@ export async function getCurrentUser(context) {
   const sessionId = getCookie(context.request);
   if (!sessionId) return null;
 
-  return await context.env.DB.prepare(
-    `SELECT users.id, users.email, users.name
+  const row = await context.env.DB.prepare(
+    `SELECT users.id, users.email, users.name, sessions.expires_at
      FROM sessions
      JOIN users ON users.id = sessions.user_id
-     WHERE sessions.id = ? AND sessions.expires_at > ?`
-  ).bind(sessionId, new Date().toISOString()).first();
+     WHERE sessions.id = ?`
+  ).bind(sessionId).first();
+
+  if (!row) return null;
+
+  const expiresAt = Date.parse(row.expires_at || "");
+  if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
+    await context.env.DB.prepare("DELETE FROM sessions WHERE id = ?").bind(sessionId).run();
+    return null;
+  }
+
+  return { id: row.id, email: row.email, name: row.name };
 }
 
 export async function requireUser(context) {

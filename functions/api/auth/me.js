@@ -12,18 +12,18 @@ export async function onRequestGet(context) {
     const user = await getCurrentUser(context);
     const sessionId = getCookie(context.request);
 
-    if (user && sessionId) {
-      await context.env.DB.prepare(
-        "UPDATE sessions SET expires_at = ? WHERE id = ? AND user_id = ?"
-      ).bind(sessionExpirationIso(), sessionId, user.id).run();
-
-      return json(
-        { user: { id: user.id, email: user.email, name: user.name } },
-        200,
-        { "set-cookie": sessionCookie(sessionId) }
-      );
+    if (!user || !sessionId) {
+      return json({ user: null });
     }
 
-    return json({ user: null });
+    await context.env.DB.prepare(
+      "UPDATE sessions SET expires_at = ? WHERE id = ?"
+    ).bind(sessionExpirationIso(), sessionId).run();
+
+    return json(
+      { user: { id: user.id, email: user.email, name: user.name } },
+      200,
+      { "Set-Cookie": sessionCookie(sessionId) }
+    );
   });
 }

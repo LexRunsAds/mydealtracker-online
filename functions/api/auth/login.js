@@ -73,7 +73,7 @@ export async function onRequestPost(context) {
     return json(
       { user: { id: user.id, email: user.email, name: user.name } },
       200,
-      { "set-cookie": sessionCookie(sessionId) }
+      { "Set-Cookie": sessionCookie(sessionId) }
     );
   });
 }

@@ -8,6 +8,6 @@ export async function onRequestPost(context) {
       await context.env.DB.prepare("DELETE FROM sessions WHERE id = ?").bind(sessionId).run();
     }
 
-    return json({ ok: true }, 200, { "set-cookie": clearSessionCookie() });
+    return json({ ok: true }, 200, { "Set-Cookie": clearSessionCookie() });
   });
 }

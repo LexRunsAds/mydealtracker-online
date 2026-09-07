@@ -133,3 +133,17 @@ Frontend-only update:
 - Keeps the keep-signed-in session fix.
 - No database changes.
 - No admin panel.
+
+
+## Reliable session fix
+
+Safe session update:
+- Keeps sessions set to 180 days.
+- Uses explicit fetch credentials so cookies are sent on refresh.
+- Uses a more robust encoded session cookie.
+- Uses `Set-Cookie` capitalization in auth responses.
+- Checks session expiration in JavaScript instead of relying on mixed SQLite datetime string comparison.
+- Refreshes the session on `/api/auth/me`.
+- No database changes.
+- No admin panel.
+- Existing users and deals stay untouched.

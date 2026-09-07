@@ -71,6 +71,6 @@ export async function onRequestPost(context) {
       "INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)"
     ).bind(sessionId, userId, sessionExpirationIso()).run();
 
-    return json({ user: { id: userId, email, name } }, 200, { "set-cookie": sessionCookie(sessionId) });
+    return json({ user: { id: userId, email, name } }, 200, { "Set-Cookie": sessionCookie(sessionId) });
   });
 }
