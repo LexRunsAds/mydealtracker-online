@@ -52,12 +52,12 @@ This version keeps Security Update v1 and refreshes the front/login page into a 
 - Better mobile and desktop landing layout.
 
 
-## Futuristic dark theme refresh
+## Register confirm password + mobile flush fix
 
-This version keeps the current login/security/backend functionality and changes the visual theme to a darker,
-futuristic interface inspired by the style reference you shared:
-- dark glassmorphism panels
-- monochrome / graphite feel
-- stronger contrast
-- futuristic hero section
-- dashboard cards styled to match the landing page
+No admin panel was added. No database tables were changed.
+
+Frontend-only changes:
+- Confirm Password field appears only during registration.
+- Registration is blocked if Password and Confirm Password do not match.
+- Register screen includes a disclaimer that password reset is not available yet.
+- Mobile layout is adjusted so the logged-in top action area and main panels are full-width and centered/flush.
