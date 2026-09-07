@@ -147,3 +147,39 @@ Safe session update:
 - No database changes.
 - No admin panel.
 - Existing users and deals stay untouched.
+
+
+## 5-minute login lockout update
+
+Safe security setting update:
+- 5 wrong password attempts on the same email now creates a 5-minute wait.
+- IP-based abuse lockout is 15 minutes.
+- Keeps reliable session / stay-signed-in fix.
+- No database changes.
+- No admin panel.
+- Existing users and deals stay untouched.
+
+
+## Auto-today Sale Date
+
+Frontend-only update:
+- When adding a new deal, Sale Date automatically fills with the current date.
+- The date field is still editable before saving.
+- Reset/Clear also returns Sale Date back to today's date.
+- No database changes.
+- No backend changes.
+- No admin panel.
+
+
+## Refresh login crash fix
+
+Safe bug fix:
+- Fixes the issue where refresh/close looked like it signed the user out.
+- Cause: Import/Export buttons were removed visually, but old JavaScript still tried to attach click handlers to those missing buttons.
+- The script now safely skips those listeners when the buttons are not present.
+- Keeps the current session/stay-signed-in logic.
+- Keeps Total Deals Tracked.
+- Keeps auto-today Sale Date.
+- No database changes.
+- No admin panel.
+- Existing users and deals stay untouched.

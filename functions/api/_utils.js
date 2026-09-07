@@ -320,12 +320,12 @@ export async function recordFailedLogin(context, email) {
   const ipCount = await eventCount(context.env, "failed_login_ip", ip, 15);
 
   if (emailCount >= 5) {
-    const lockedUntil = await setLockout(context.env, "login_email", email, 15, "too-many-failed-passwords");
+    const lockedUntil = await setLockout(context.env, "login_email", email, 5, "too-many-failed-passwords");
     throw apiError(waitMessage({ lockedUntil }), 429);
   }
 
   if (ipCount >= 20) {
-    const lockedUntil = await setLockout(context.env, "login_ip", ip, 30, "too-many-failed-passwords-from-ip");
+    const lockedUntil = await setLockout(context.env, "login_ip", ip, 15, "too-many-failed-passwords-from-ip");
     throw apiError(waitMessage({ lockedUntil }), 429);
   }
 }

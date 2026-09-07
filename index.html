@@ -2463,30 +2463,37 @@
       await loadAppData();
     };
 
-    document.getElementById("exportBtn").addEventListener("click", function() {
-      const backup = {
-        app: "My Deal Tracker Online",
-        version: 1,
-        exportedAt: new Date().toISOString(),
-        data: { goal: state.goal, deals: state.deals }
-      };
+    const exportBtn = document.getElementById("exportBtn");
+    if (exportBtn) {
+      exportBtn.addEventListener("click", function() {
+        const backup = {
+          app: "My Deal Tracker Online",
+          version: 1,
+          exportedAt: new Date().toISOString(),
+          data: { goal: state.goal, deals: state.deals }
+        };
 
-      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `mydealtracker-online-backup-${timestampForFilename()}.json`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    });
+        const blob = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `mydealtracker-online-backup-${timestampForFilename()}.json`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      });
+    }
 
-    document.getElementById("importBtn").addEventListener("click", function() {
-      document.getElementById("importFile").click();
-    });
+    const importBtn = document.getElementById("importBtn");
+    if (importBtn) {
+      importBtn.addEventListener("click", function() {
+        document.getElementById("importFile").click();
+      });
+    }
 
-    document.getElementById("importFile").addEventListener("change", function(e) {
+    const importFileInput = document.getElementById("importFile");
+    if (importFileInput) importFileInput.addEventListener("change", function(e) {
       const file = e.target.files[0];
       if (!file) return;
 
