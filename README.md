@@ -61,3 +61,22 @@ Frontend-only changes:
 - Registration is blocked if Password and Confirm Password do not match.
 - Register screen includes a disclaimer that password reset is not available yet.
 - Mobile layout is adjusted so the logged-in top action area and main panels are full-width and centered/flush.
+
+
+## Password disclaimer readability fix
+
+Frontend-only update:
+- Changed the registration disclaimer from yellow text to a darker high-contrast box with white text.
+- No database changes.
+- No backend changes.
+- No admin panel.
+
+
+## Mobile topbar flush fix
+
+Frontend-only update:
+- Forces the logged-in top account/action box to take the same full mobile width as the dashboard cards.
+- Centers and stretches the account/action buttons on mobile.
+- No database changes.
+- No backend changes.
+- No admin panel.

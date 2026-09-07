@@ -1389,16 +1389,17 @@
     .register-disclaimer {
       padding: 12px 13px;
       border-radius: 14px;
-      background: rgba(255, 210, 123, .10);
-      border: 1px solid rgba(255, 210, 123, .20);
-      color: rgba(255, 232, 190, .92);
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .16);
+      color: rgba(255, 255, 255, .88);
       font-size: 12px;
       line-height: 1.45;
-      font-weight: 700;
+      font-weight: 750;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
     }
 
     .register-disclaimer strong {
-      color: #fff1c9;
+      color: #ffffff;
       font-weight: 950;
     }
 
@@ -1448,6 +1449,85 @@
       .auth-wrap,
       .landing-hero,
       .auth-card {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+  
+    /* Mobile top account box flush/center fix */
+    @media (max-width: 760px) {
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      .shell {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .topbar {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        gap: 18px;
+        padding: 28px 26px;
+        border-radius: 24px;
+      }
+
+      .brand-wrap,
+      .brand,
+      .top-actions {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .brand {
+        justify-content: center;
+        text-align: left;
+      }
+
+      .brand h1,
+      .brand span,
+      .brand-eyebrow {
+        width: 100%;
+      }
+
+      .top-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+      }
+
+      .top-actions.hidden {
+        display: none !important;
+      }
+
+      .top-actions button,
+      .user-chip {
+        width: 100%;
+        max-width: 100%;
+        min-height: 58px;
+        justify-content: center;
+        text-align: center;
+        border-radius: 18px;
+      }
+
+      .entry-panel,
+      .dashboard,
+      .panel {
         width: 100%;
         max-width: 100%;
       }
