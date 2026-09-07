@@ -1533,6 +1533,131 @@
       }
     }
 
+  
+    /* Mobile dashboard overflow fix */
+    @media (max-width: 760px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      .shell {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .topbar {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .dashboard,
+      .entry-panel,
+      .panel,
+      .panel-body,
+      .auth-wrap,
+      .landing-hero,
+      .auth-card,
+      .deal-list,
+      .previous-pending,
+      .global-search-results {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .panel {
+        overflow: hidden;
+      }
+
+      .entry-panel .panel-body {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 16px;
+      }
+
+      .two,
+      .check-grid,
+      .stats,
+      .list-tools {
+        grid-template-columns: minmax(0, 1fr) !important;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .form-grid,
+      .form-grid > div,
+      .two > div,
+      .check-grid > *,
+      .stats > *,
+      .list-tools > *,
+      .goal-card,
+      .deal-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .goal-card {
+        overflow: hidden;
+        padding: 24px 18px;
+      }
+
+      .goal-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .goal-top input {
+        width: 86px;
+        max-width: 100%;
+        flex: 0 0 auto;
+      }
+
+      .goal-number {
+        font-size: 44px;
+        line-height: 1;
+      }
+
+      .goal-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .deal-card {
+        grid-template-columns: minmax(0, 1fr) !important;
+        overflow: hidden;
+      }
+
+      .card-actions {
+        justify-content: stretch;
+      }
+
+      .card-actions button {
+        flex: 1 1 auto;
+      }
+    }
+
   </style>
 </head>
 <body>

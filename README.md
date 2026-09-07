@@ -80,3 +80,14 @@ Frontend-only update:
 - No database changes.
 - No backend changes.
 - No admin panel.
+
+
+## Mobile dashboard width fix
+
+Frontend-only update:
+- Keeps the top account/action box flush and centered.
+- Prevents Add Sold Deal, goal card, stat cards, inputs, and deal cards from overflowing mobile width.
+- Forces mobile dashboard sections into one-column layouts.
+- No database changes.
+- No backend changes.
+- No admin panel.
