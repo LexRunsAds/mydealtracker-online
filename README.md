@@ -91,3 +91,13 @@ Frontend-only update:
 - No database changes.
 - No backend changes.
 - No admin panel.
+
+
+## Register disclaimer dark text fix
+
+Frontend-only update:
+- Makes the password reset disclaimer readable on the light login card.
+- Uses a light warning box with dark text.
+- No database changes.
+- No backend changes.
+- No admin panel.
