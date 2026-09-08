@@ -340,3 +340,23 @@ Preserved:
 - Existing D1 binding and database structure
 
 No existing database or user/deal data is modified by deploying these files.
+
+
+## Cloudflare Web Analytics CSP Fix
+
+This update keeps the pre-Meta rollback state and only permits Cloudflare's own Web Analytics beacon.
+
+Added:
+- `https://static.cloudflareinsights.com` to `script-src`
+- `https://cloudflareinsights.com` to `connect-src`
+
+Preserved:
+- No Meta Pixel
+- No Facebook tracking
+- `default-src 'self'`
+- `frame-ancestors 'none'`
+- `base-uri 'self'`
+- `form-action 'self'`
+- Existing ezDealTrack admin, analytics, auth, Terms, Privacy, and user/deal data behavior
+
+No database or schema changes.
