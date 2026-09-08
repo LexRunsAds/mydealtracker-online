@@ -215,3 +215,14 @@ Frontend-only update:
 - No database changes.
 - No backend changes.
 - No admin panel.
+
+
+## Mobile field fit fix
+
+Frontend-only update:
+- Fixes mobile overflow where some inputs/selects/date fields pushed past the right edge.
+- Specifically targets date/month/select/search controls and grid children on mobile.
+- Keeps the current dark theme, session behavior, and all existing functionality.
+- No database changes.
+- No backend changes.
+- No admin panel.

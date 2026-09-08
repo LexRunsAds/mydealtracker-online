@@ -2100,6 +2100,79 @@
       color: #0f172a !important;
     }
 
+  
+    /* Mobile control sizing fix: keep date/month/select fields inside panel edges */
+    .form-grid,
+    .two,
+    .list-tools,
+    .check-grid,
+    .panel-body,
+    .panel-body > div,
+    .two > div,
+    .list-tools > * {
+      min-width: 0;
+    }
+
+    input,
+    select,
+    textarea {
+      box-sizing: border-box;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    input[type="date"],
+    input[type="month"],
+    input[type="search"],
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select,
+    textarea {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    @media (max-width: 760px) {
+      .panel,
+      .panel-body,
+      .form-grid,
+      .two,
+      .list-tools {
+        min-width: 0;
+      }
+
+      .two > div,
+      .list-tools > *,
+      .form-grid > div {
+        min-width: 0;
+        width: 100%;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      input[type="date"],
+      input[type="month"],
+      select {
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 18px;
+      }
+
+      .entry-panel .panel-body,
+      .panel .panel-body {
+        overflow-x: clip;
+      }
+    }
+
   </style>
 </head>
 <body>
