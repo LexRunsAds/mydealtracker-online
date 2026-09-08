@@ -339,3 +339,25 @@ Safety:
 - No user/deal data changes
 - No auth/session changes
 - No admin analytics changes
+
+
+## Meta Pixel Clean Reinstall
+
+The previous Meta Pixel code was removed and replaced with a fresh clean copy.
+
+Pixel ID:
+- `1725971108700692`
+
+Installed on:
+- `index.html`
+- `terms.html`
+- `privacy.html`
+
+Not installed on:
+- `admin.html`
+
+The code uses the correct raw URLs:
+- `https://connect.facebook.net/en_US/fbevents.js`
+- `https://www.facebook.com/tr?id=1725971108700692&ev=PageView&noscript=1`
+
+No database, D1, user, deal, auth, session, or admin-data changes.
