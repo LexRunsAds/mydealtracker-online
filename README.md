@@ -226,3 +226,20 @@ Frontend-only update:
 - No database changes.
 - No backend changes.
 - No admin panel.
+
+
+## ezDealTrack rebrand update
+
+Included:
+- Replaces the old social / Open Graph share image with the new ezDealTrack version.
+- Keeps the share-image filename as `og-share-image.png` for easy GitHub replacement.
+- Updates visible site branding from `My Deal Tracker` to `ezDealTrack`.
+- Updates page title and social meta tags to use `ezDealTrack`.
+- Updates Open Graph/Twitter image URL to `https://ezdealtrack.com/og-share-image.png`.
+- Keeps the current dark theme and all existing functionality.
+
+Safe update:
+- No database changes
+- No backend changes
+- No admin changes
+- Existing users and deals stay untouched
