@@ -391,3 +391,31 @@ After deploying, verify:
 3. `facebook.com/tr` appears in Network
 4. Meta Test Events receives `PageView`
 5. A brand-new successful signup produces `CompleteRegistration`
+
+
+## CSP Fix v2 — Meta Test Events + Cloudflare Insights
+
+The CSP was preserved and expanded to allow the additional endpoints visible in Chrome DevTools.
+
+Added to `script-src`:
+- `https://static.cloudflareinsights.com`
+
+Added to `connect-src`:
+- `https://cloudflareinsights.com`
+- `https://*.a.run.app`
+- `https://*.ecs.us-east-1.on.aws`
+
+Existing Meta permissions remain:
+- `https://connect.facebook.net`
+- `https://www.facebook.com`
+
+Existing security directives remain:
+- `default-src 'self'`
+- `frame-ancestors 'none'`
+- `base-uri 'self'`
+- `form-action 'self'`
+
+Why the wildcard connect domains are present:
+The current Meta Pixel version can POST event payloads to Meta-operated regional event endpoints hosted on Google Cloud Run (`*.a.run.app`) and AWS (`*.ecs.us-east-1.on.aws`). These are allowed only under `connect-src`; they cannot execute scripts, render frames, or load arbitrary images through this CSP entry.
+
+No database, D1, user, deal, auth/session, or admin data changes.
