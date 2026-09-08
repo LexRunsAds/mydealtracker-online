@@ -204,3 +204,14 @@ Safe visual update:
 - No database changes.
 - No backend changes.
 - No admin panel.
+
+
+## Dark theme button contrast fix
+
+Frontend-only update:
+- Fixes unreadable text on the Start Tracking Deals button.
+- Fixes unreadable text on the Logout button.
+- Keeps the current dark premium theme and all existing functionality.
+- No database changes.
+- No backend changes.
+- No admin panel.
