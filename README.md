@@ -243,3 +243,24 @@ Safe update:
 - No backend changes
 - No admin changes
 - Existing users and deals stay untouched
+
+
+## Terms + Privacy + Signup Consent
+
+This update adds:
+- `terms.html`
+- `privacy.html`
+- Terms and Privacy links in the site footer
+- Required Terms/Privacy consent checkbox in Register mode only
+- Account creation is blocked until the checkbox is checked
+- Existing password warning remains
+
+Safety:
+- No database schema changes
+- No D1 data changes
+- No admin panel
+- No auth/session backend changes
+- Existing users and deals remain untouched
+
+Important legal note:
+The included legal pages are general business drafts and should be reviewed by a qualified attorney before a paid/commercial launch or broader collection of customer information.
