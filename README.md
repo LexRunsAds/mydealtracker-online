@@ -318,104 +318,25 @@ Existing total user and deal counts appear immediately because they come from yo
 Page views, successful/failed login analytics, and detailed app events begin accumulating after this update is deployed.
 
 
-## Meta Pixel Update
+## Pre-Meta Rollback Package
 
-Meta Pixel ID:
-- `1725971108700692`
+This package restores ezDealTrack to the working Admin Dashboard v1 state from immediately before Meta Pixel was added.
 
-Pixel added to:
-- `index.html`
-- `terms.html`
-- `privacy.html`
+Restored:
+- Original stricter Content Security Policy
+- No Meta/Facebook Pixel scripts
+- No Meta tracking requests
+- No CompleteRegistration Meta event
+- No Meta-specific Privacy Policy section
 
-Pixel intentionally NOT added to:
-- `admin.html`
+Preserved:
+- ezDealTrack branding
+- Admin Dashboard v1
+- Internal first-party page-view analytics
+- Terms & Conditions
+- Privacy Policy
+- Signup consent checkbox
+- Existing auth/session/security behavior
+- Existing D1 binding and database structure
 
-The Privacy Policy was updated to disclose use of the Meta Pixel.
-
-Safety:
-- No database changes
-- No D1 schema changes
-- No user/deal data changes
-- No auth/session changes
-- No admin analytics changes
-
-
-## Meta Pixel Clean Reinstall
-
-The previous Meta Pixel code was removed and replaced with a fresh clean copy.
-
-Pixel ID:
-- `1725971108700692`
-
-Installed on:
-- `index.html`
-- `terms.html`
-- `privacy.html`
-
-Not installed on:
-- `admin.html`
-
-The code uses the correct raw URLs:
-- `https://connect.facebook.net/en_US/fbevents.js`
-- `https://www.facebook.com/tr?id=1725971108700692&ev=PageView&noscript=1`
-
-No database, D1, user, deal, auth, session, or admin-data changes.
-
-
-## Meta Pixel CSP Fix + CompleteRegistration
-
-The live CSP was coming from the Cloudflare Pages `_headers` file.
-
-The existing CSP was preserved and expanded only where needed for Meta Pixel:
-
-- `script-src` now allows `https://connect.facebook.net`
-- `connect-src` now allows `https://www.facebook.com` and `https://connect.facebook.net`
-- `img-src` now allows `https://www.facebook.com`
-
-Existing directives remain in place:
-- `default-src 'self'`
-- inline script/style allowances already used by the app
-- `frame-ancestors 'none'`
-- `base-uri 'self'`
-- `form-action 'self'`
-
-`CompleteRegistration` was added to the signup flow and fires only after `/api/auth/register` returns successfully.
-It does not fire for login attempts or failed registrations.
-
-No database, D1, user, deal, auth/session, or admin analytics schema changes were made.
-
-After deploying, verify:
-1. `connect.facebook.net/en_US/fbevents.js` loads in Network
-2. `typeof fbq` returns `"function"` in Console
-3. `facebook.com/tr` appears in Network
-4. Meta Test Events receives `PageView`
-5. A brand-new successful signup produces `CompleteRegistration`
-
-
-## CSP Fix v2 — Meta Test Events + Cloudflare Insights
-
-The CSP was preserved and expanded to allow the additional endpoints visible in Chrome DevTools.
-
-Added to `script-src`:
-- `https://static.cloudflareinsights.com`
-
-Added to `connect-src`:
-- `https://cloudflareinsights.com`
-- `https://*.a.run.app`
-- `https://*.ecs.us-east-1.on.aws`
-
-Existing Meta permissions remain:
-- `https://connect.facebook.net`
-- `https://www.facebook.com`
-
-Existing security directives remain:
-- `default-src 'self'`
-- `frame-ancestors 'none'`
-- `base-uri 'self'`
-- `form-action 'self'`
-
-Why the wildcard connect domains are present:
-The current Meta Pixel version can POST event payloads to Meta-operated regional event endpoints hosted on Google Cloud Run (`*.a.run.app`) and AWS (`*.ecs.us-east-1.on.aws`). These are allowed only under `connect-src`; they cannot execute scripts, render frames, or load arbitrary images through this CSP entry.
-
-No database, D1, user, deal, auth/session, or admin data changes.
+No existing database or user/deal data is modified by deploying these files.
