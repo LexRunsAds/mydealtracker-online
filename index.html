@@ -2968,8 +2968,15 @@ src="https://www.facebook.com/tr?id=1725971108700692&ev=PageView&noscript=1"
           password
         };
 
-        const endpoint = authMode === "register" ? "/api/auth/register" : "/api/auth/login";
+        const wasRegistration = authMode === "register";
+        const endpoint = wasRegistration ? "/api/auth/register" : "/api/auth/login";
         const data = await api(endpoint, { method: "POST", body: JSON.stringify(body) });
+
+        // Meta conversion event: fires only after the registration API succeeds.
+        // No customer/deal/password data is sent with this event.
+        if (wasRegistration && typeof window.fbq === "function") {
+          window.fbq("track", "CompleteRegistration");
+        }
 
         state.user = data.user;
         showLoggedIn();

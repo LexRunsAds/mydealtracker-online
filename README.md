@@ -361,3 +361,33 @@ The code uses the correct raw URLs:
 - `https://www.facebook.com/tr?id=1725971108700692&ev=PageView&noscript=1`
 
 No database, D1, user, deal, auth, session, or admin-data changes.
+
+
+## Meta Pixel CSP Fix + CompleteRegistration
+
+The live CSP was coming from the Cloudflare Pages `_headers` file.
+
+The existing CSP was preserved and expanded only where needed for Meta Pixel:
+
+- `script-src` now allows `https://connect.facebook.net`
+- `connect-src` now allows `https://www.facebook.com` and `https://connect.facebook.net`
+- `img-src` now allows `https://www.facebook.com`
+
+Existing directives remain in place:
+- `default-src 'self'`
+- inline script/style allowances already used by the app
+- `frame-ancestors 'none'`
+- `base-uri 'self'`
+- `form-action 'self'`
+
+`CompleteRegistration` was added to the signup flow and fires only after `/api/auth/register` returns successfully.
+It does not fire for login attempts or failed registrations.
+
+No database, D1, user, deal, auth/session, or admin analytics schema changes were made.
+
+After deploying, verify:
+1. `connect.facebook.net/en_US/fbevents.js` loads in Network
+2. `typeof fbq` returns `"function"` in Console
+3. `facebook.com/tr` appears in Network
+4. Meta Test Events receives `PageView`
+5. A brand-new successful signup produces `CompleteRegistration`
