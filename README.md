@@ -194,3 +194,13 @@ Safe frontend/static update:
 - No database changes.
 - No backend changes.
 - No admin panel.
+
+
+## Dark theme update
+
+Safe visual update:
+- Updates the full site to a dark premium theme inspired by the social share image.
+- Keeps the current online functionality and social share image/meta tags.
+- No database changes.
+- No backend changes.
+- No admin panel.

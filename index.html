@@ -1731,6 +1731,344 @@
       box-shadow: 0 8px 18px rgba(15, 23, 42, .06) !important;
     }
 
+  
+    /* Dark premium theme inspired by the social share image */
+    :root {
+      --bg: #06080d;
+      --card: #0c1118;
+      --ink: #edf2fb;
+      --muted: #95a0b3;
+      --line: rgba(255,255,255,.10);
+      --blue: #93c5fd;
+      --blue-2: #dbe7ff;
+      --navy: #e8eefb;
+      --cyan: #67e8f9;
+      --green: #86efac;
+      --orange: #fbbf24;
+      --red: #fca5a5;
+      --gold: #d4a646;
+      --shadow: 0 22px 56px rgba(0, 0, 0, .34);
+    }
+
+    body {
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(59,130,246,.09), transparent 25%),
+        radial-gradient(circle at 85% 0%, rgba(255,255,255,.05), transparent 22%),
+        linear-gradient(180deg, #030507 0%, #070a10 46%, #0b1017 100%);
+    }
+
+    .topbar {
+      background:
+        radial-gradient(circle at right top, rgba(255,255,255,.08), transparent 28%),
+        linear-gradient(135deg, #0b0f16 0%, #101827 58%, #1d4ed8 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 20px 46px rgba(0,0,0,.34);
+    }
+
+    .brand-eyebrow { color: rgba(255,255,255,.70); }
+    .brand h1 { color: #ffffff; }
+    .brand span { color: rgba(255,255,255,.76); }
+
+    .topbar-badge {
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.10);
+      box-shadow: none;
+    }
+
+    .topbar-badge strong { color: #ffffff; }
+    .topbar-badge span { color: rgba(255,255,255,.68); }
+
+    .user-chip,
+    .user-stat-chip {
+      background: #f8fbff !important;
+      color: #111827 !important;
+      border: 1px solid #dce5f2 !important;
+      box-shadow: 0 10px 20px rgba(0,0,0,.16) !important;
+    }
+
+    .btn-red {
+      background: rgba(255,255,255,.08);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: none;
+    }
+
+    .btn-red:hover {
+      background: rgba(255,255,255,.12);
+    }
+
+    .panel,
+    .auth-card,
+    .why-section {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        #0d131b !important;
+      border: 1px solid rgba(255,255,255,.08) !important;
+      box-shadow: 0 18px 42px rgba(0,0,0,.26) !important;
+    }
+
+    .panel h2,
+    .section-heading h2,
+    .auth-card h3,
+    .why-card h3,
+    .customer-name,
+    .goal-number,
+    .stat strong,
+    .site-credit a {
+      color: #f8fbff;
+    }
+
+    .panel-sub,
+    .section-heading p,
+    .auth-card p,
+    .why-card p,
+    .customer-meta,
+    .notes,
+    .goal-meta,
+    .empty,
+    .site-credit,
+    .footnote,
+    .section-title span {
+      color: var(--muted);
+    }
+
+    .auth-toggle {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .auth-toggle button {
+      color: #a8b3c7;
+    }
+
+    .auth-toggle button.active {
+      background: rgba(255,255,255,.10);
+      color: #ffffff;
+      box-shadow: 0 10px 18px rgba(0,0,0,.18);
+    }
+
+    label {
+      color: rgba(255,255,255,.78);
+    }
+
+    input,
+    select,
+    textarea {
+      background: rgba(255,255,255,.04);
+      color: #f3f7fe;
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255,255,255,.35);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(147,197,253,.55);
+      box-shadow: 0 0 0 4px rgba(147,197,253,.10);
+      outline: none;
+    }
+
+    select option {
+      background: #0d131b;
+      color: #f8fbff;
+    }
+
+    .register-disclaimer,
+    .auth-card .register-disclaimer {
+      background: rgba(255,255,255,.08) !important;
+      border: 1px solid rgba(255,255,255,.14) !important;
+      color: #eaf0fb !important;
+      box-shadow: none !important;
+    }
+
+    .register-disclaimer strong,
+    .auth-card .register-disclaimer strong {
+      color: #ffffff !important;
+    }
+
+    .goal-card,
+    .numbers-card {
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.10), transparent 26%),
+        linear-gradient(135deg, #0a0e14 0%, #121a29 55%, #1e40af 100%) !important;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 20px 48px rgba(0,0,0,.30);
+    }
+
+    .goal-top label { color: #dbeafe; }
+    .goal-top input {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.18);
+      color: #ffffff;
+    }
+
+    .goal-track {
+      background: rgba(255,255,255,.14);
+    }
+
+    .goal-bar {
+      background: linear-gradient(90deg, #f8fbff, #c7d9ff);
+    }
+
+    .stat,
+    .check,
+    .deal-card,
+    .empty,
+    .why-card {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        #101722 !important;
+      border: 1px solid rgba(255,255,255,.08) !important;
+      box-shadow: 0 12px 26px rgba(0,0,0,.18);
+    }
+
+    .stat span,
+    .check,
+    .empty {
+      color: var(--muted);
+    }
+
+    .check input {
+      accent-color: #dbeafe;
+    }
+
+    .deal-card {
+      border-color: rgba(255,255,255,.08) !important;
+    }
+
+    .pill-blue {
+      background: rgba(147,197,253,.12);
+      color: #dbeafe;
+      border-color: rgba(147,197,253,.20);
+    }
+
+    .pill-green {
+      background: rgba(134,239,172,.10);
+      color: #bbf7d0;
+      border-color: rgba(134,239,172,.18);
+    }
+
+    .pill-orange {
+      background: rgba(251,191,36,.10);
+      color: #fde68a;
+      border-color: rgba(251,191,36,.18);
+    }
+
+    .pill-red {
+      background: rgba(252,165,165,.10);
+      color: #fecaca;
+      border-color: rgba(252,165,165,.20);
+    }
+
+    .pill-gray,
+    .mini-chip {
+      background: rgba(255,255,255,.05);
+      color: #cbd5e1;
+      border-color: rgba(255,255,255,.10);
+    }
+
+    .mini-chip.ok {
+      background: rgba(134,239,172,.10);
+      color: #bbf7d0;
+      border-color: rgba(134,239,172,.18);
+    }
+
+    .card-actions {
+      border-top-color: rgba(255,255,255,.08);
+    }
+
+    .btn-soft {
+      background: rgba(255,255,255,.05);
+      color: #f8fbff;
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .btn-dark {
+      background: #f8fbff;
+      color: #111827;
+      border: 1px solid #dce5f2;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #ffffff, #dbe7ff);
+      color: #0f172a;
+      border: 1px solid rgba(255,255,255,.25);
+      box-shadow: 0 12px 24px rgba(255,255,255,.08);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.02);
+    }
+
+    .hero-copy,
+    .auth-hero {
+      background:
+        radial-gradient(circle at top center, rgba(255,255,255,.08), transparent 28%),
+        linear-gradient(135deg, #080b11 0%, #101827 50%, #1d4ed8 100%) !important;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 24px 56px rgba(0,0,0,.30);
+    }
+
+    .hero-label,
+    .auth-kicker,
+    .auth-card-badge {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.88);
+    }
+
+    .hero-lead,
+    .auth-lead,
+    .trust-row small {
+      color: rgba(255,255,255,.76);
+    }
+
+    .trust-row div {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .section-kicker,
+    .why-number {
+      color: #ffffff;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .numbers-card span { color: rgba(255,255,255,.76); }
+
+    .status-msg {
+      color: #dbeafe;
+    }
+
+    .month-label,
+    .month-note {
+      color: var(--muted);
+    }
+
+    .site-credit {
+      color: rgba(255,255,255,.54);
+    }
+
+    .site-credit a {
+      color: #ffffff;
+    }
+
+    @media (max-width: 760px) {
+      .user-chip,
+      .user-stat-chip {
+        color: #111827 !important;
+        background: #ffffff !important;
+        border: 1px solid #dce5f2 !important;
+      }
+    }
+
   </style>
 </head>
 <body>
