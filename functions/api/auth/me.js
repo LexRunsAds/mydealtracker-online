@@ -4,7 +4,8 @@ import {
   withErrorHandling,
   getCookie,
   sessionCookie,
-  sessionExpirationIso
+  sessionExpirationIso,
+  isAdminEmail
 } from "../_utils.js";
 
 export async function onRequestGet(context) {
@@ -21,7 +22,7 @@ export async function onRequestGet(context) {
     ).bind(sessionExpirationIso(), sessionId).run();
 
     return json(
-      { user: { id: user.id, email: user.email, name: user.name } },
+      { user: { id: user.id, email: user.email, name: user.name, isAdmin: isAdminEmail(user.email) } },
       200,
       { "Set-Cookie": sessionCookie(sessionId) }
     );

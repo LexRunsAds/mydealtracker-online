@@ -14,7 +14,9 @@ import {
   recordFailedLogin,
   clearFailedLogin,
   applyRateLimit,
-  cleanupOldSecurityEvents
+  cleanupOldSecurityEvents,
+  recordAnalyticsEvent,
+  isAdminEmail
 } from "../_utils.js";
 
 export async function onRequestPost(context) {
@@ -53,17 +55,20 @@ export async function onRequestPost(context) {
     ).bind(email).first();
 
     if (!user) {
+      await recordAnalyticsEvent(context, "failed_login", "", "unknown-account");
       await recordFailedLogin(context, email);
       return json({ error: "Invalid email or password." }, 401);
     }
 
     const ok = await verifyPassword(password, user.password_hash);
     if (!ok) {
+      await recordAnalyticsEvent(context, "failed_login", user.id, "bad-password");
       await recordFailedLogin(context, email);
       return json({ error: "Invalid email or password." }, 401);
     }
 
     await clearFailedLogin(context, email, user.id);
+    await recordAnalyticsEvent(context, "successful_login", user.id, "password-login");
 
     const sessionId = newId();
     await context.env.DB.prepare(
@@ -71,7 +76,7 @@ export async function onRequestPost(context) {
     ).bind(sessionId, user.id, sessionExpirationIso()).run();
 
     return json(
-      { user: { id: user.id, email: user.email, name: user.name } },
+      { user: { id: user.id, email: user.email, name: user.name, isAdmin: isAdminEmail(user.email) } },
       200,
       { "Set-Cookie": sessionCookie(sessionId) }
     );

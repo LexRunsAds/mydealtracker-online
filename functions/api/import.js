@@ -6,7 +6,8 @@ import {
   withErrorHandling,
   apiError,
   applyRateLimit,
-  clientIp
+  clientIp,
+  recordAnalyticsEvent
 } from "./_utils.js";
 
 const MAX_IMPORT_DEALS = 500;
@@ -89,6 +90,7 @@ export async function onRequestPost(context) {
       ).bind(user.id, safeGoal, new Date().toISOString()).run();
     }
 
+    await recordAnalyticsEvent(context, "import_completed", user.id, String(imported));
     return json({ imported });
   });
 }

@@ -264,3 +264,55 @@ Safety:
 
 Important legal note:
 The included legal pages are general business drafts and should be reviewed by a qualified attorney before a paid/commercial launch or broader collection of customer information.
+
+
+## ezDealTrack Admin Dashboard v1
+
+Admin email:
+- `alex@pbfish.com`
+
+Admin URL:
+- `/admin.html`
+
+Admin access is enforced server-side. Knowing the URL is not enough to access analytics.
+
+### Metrics included
+- Total users
+- New users today / this month
+- Total deals tracked across all users
+- Deals added today / this month
+- Average deals per user
+- Top users ranked by deals tracked
+- Recent signups
+- Successful logins (from this analytics version forward)
+- Failed logins (from this analytics version forward)
+- Active sessions
+- Active lockouts
+- Imports completed (from this analytics version forward)
+- Total page views (from deployment forward)
+- Page views today / this month
+- Approximate unique visitors
+- Top pages
+- 14-day traffic chart
+- Recent app activity
+
+### Page-view privacy
+Page views use a first-party anonymous browser identifier stored in localStorage. The ezDealTrack page-view analytics table does not intentionally store raw IP addresses.
+
+### Database safety
+This update is additive only.
+It does NOT delete or alter existing:
+- users
+- deals
+- sessions
+- user_settings
+- security_events
+- account_lockouts
+
+The new analytics tables are created automatically using `CREATE TABLE IF NOT EXISTS`.
+
+`admin_analytics_migration.sql` is included for reference/manual setup, but the app also creates the tables automatically when analytics/admin endpoints run.
+
+### Historical data note
+Existing total user and deal counts appear immediately because they come from your current tables.
+Page views, successful/failed login analytics, and detailed app events begin accumulating after this update is deployed.

@@ -7,7 +7,8 @@ import {
   withErrorHandling,
   apiError,
   applyRateLimit,
-  clientIp
+  clientIp,
+  recordAnalyticsEvent
 } from "./_utils.js";
 
 export async function onRequestGet(context) {
@@ -61,6 +62,7 @@ export async function onRequestPost(context) {
       deal.delivery_date, deal.status, deal.notes, deal.updated_at
     ).run();
 
+    await recordAnalyticsEvent(context, "deal_created", user.id, deal.id);
     return json({ ok: true, deal });
   });
 }
@@ -97,6 +99,7 @@ export async function onRequestPut(context) {
       deal.id, user.id
     ).run();
 
+    await recordAnalyticsEvent(context, "deal_updated", user.id, deal.id);
     return json({ ok: true });
   });
 }
@@ -120,6 +123,7 @@ export async function onRequestDelete(context) {
     if (!id || id.length > 80) return json({ error: "Missing deal ID." }, 400);
 
     await context.env.DB.prepare("DELETE FROM deals WHERE id = ? AND user_id = ?").bind(id, user.id).run();
+    await recordAnalyticsEvent(context, "deal_deleted", user.id, id);
     return json({ ok: true });
   });
 }

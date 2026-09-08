@@ -13,7 +13,9 @@ import {
   clientIp,
   applyRateLimit,
   recordSecurityEvent,
-  cleanupOldSecurityEvents
+  cleanupOldSecurityEvents,
+  recordAnalyticsEvent,
+  isAdminEmail
 } from "../_utils.js";
 
 export async function onRequestPost(context) {
@@ -65,12 +67,13 @@ export async function onRequestPost(context) {
     ).bind(userId, 15).run();
 
     await recordSecurityEvent(context, "successful_register", email, "register-success", userId);
+    await recordAnalyticsEvent(context, "account_created", userId, "self-register");
 
     const sessionId = newId();
     await context.env.DB.prepare(
       "INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)"
     ).bind(sessionId, userId, sessionExpirationIso()).run();
 
-    return json({ user: { id: userId, email, name } }, 200, { "Set-Cookie": sessionCookie(sessionId) });
+    return json({ user: { id: userId, email, name, isAdmin: isAdminEmail(email) } }, 200, { "Set-Cookie": sessionCookie(sessionId) });
   });
 }

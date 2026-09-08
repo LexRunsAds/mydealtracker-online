@@ -446,3 +446,85 @@ export function dealRowToClient(row) {
     updatedAt: row.updated_at || ""
   };
 }
+
+
+export const ADMIN_EMAIL = "alex@pbfish.com";
+
+export function isAdminEmail(email) {
+  return normalizeEmail(email) === ADMIN_EMAIL;
+}
+
+export async function ensureAnalyticsTables(env) {
+  if (!env?.DB) throw apiError("Database binding is missing.", 500);
+
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS analytics_events (
+      id TEXT PRIMARY KEY,
+      event_type TEXT NOT NULL,
+      user_id TEXT,
+      details TEXT,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP
+    )`
+  ).run();
+
+  await env.DB.prepare(
+    `CREATE INDEX IF NOT EXISTS idx_analytics_events_type_created
+     ON analytics_events (event_type, created_at)`
+  ).run();
+
+  await env.DB.prepare(
+    `CREATE INDEX IF NOT EXISTS idx_analytics_events_user_created
+     ON analytics_events (user_id, created_at)`
+  ).run();
+
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS page_views (
+      id TEXT PRIMARY KEY,
+      visitor_id TEXT NOT NULL,
+      user_id TEXT,
+      path TEXT NOT NULL,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP
+    )`
+  ).run();
+
+  await env.DB.prepare(
+    `CREATE INDEX IF NOT EXISTS idx_page_views_created
+     ON page_views (created_at)`
+  ).run();
+
+  await env.DB.prepare(
+    `CREATE INDEX IF NOT EXISTS idx_page_views_visitor_created
+     ON page_views (visitor_id, created_at)`
+  ).run();
+
+  await env.DB.prepare(
+    `CREATE INDEX IF NOT EXISTS idx_page_views_path_created
+     ON page_views (path, created_at)`
+  ).run();
+}
+
+export async function recordAnalyticsEvent(context, eventType, userId = "", details = "") {
+  await ensureAnalyticsTables(context.env);
+  await context.env.DB.prepare(
+    `INSERT INTO analytics_events (id, event_type, user_id, details)
+     VALUES (?, ?, ?, ?)`
+  ).bind(
+    newId(),
+    cleanText(eventType || "unknown", 80, "Event type"),
+    String(userId || "").slice(0, 100),
+    String(details || "").slice(0, 500)
+  ).run();
+}
+
+export async function requireAdmin(context) {
+  const user = await getCurrentUser(context);
+  if (!user) {
+    return { user: null, response: json({ error: "Not logged in" }, 401) };
+  }
+
+  if (!isAdminEmail(user.email)) {
+    return { user, response: json({ error: "Admin access required" }, 403) };
+  }
+
+  return { user, response: null };
+}

@@ -171,6 +171,10 @@ a { color: #dbeafe; }
       <h2>6. Cookies and Session Information</h2>
       <p>ezDealTrack uses session cookies or similar technologies to keep users signed in, authenticate requests, and protect account access. These technologies may store or transmit session identifiers and related authentication information. Disabling cookies may prevent parts of the Service from functioning correctly.</p>
 
+      
+      <h2>6A. First-Party Usage Analytics</h2>
+      <p>We may collect basic first-party usage analytics such as page path, page-view timestamps, and an anonymous browser identifier stored locally in your browser. We use this information to understand aggregate usage, approximate unique visitors, and which pages are used most often. The internal page-view tracker is not intended to store your raw IP address in the ezDealTrack analytics table.</p>
+
       <h2>7. How We May Share Information</h2>
       <p>We do not sell personal information to advertisers.</p>
       <p>We may disclose information:</p>
@@ -217,5 +221,26 @@ a { color: #dbeafe; }
 
     <div class="footer">© 2026 ezDealTrack. All rights reserved.</div>
   </main>
+
+<script>
+(function () {
+  try {
+    let visitorId = localStorage.getItem("ezdt_visitor_id");
+    if (!visitorId) {
+      visitorId = (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+      localStorage.setItem("ezdt_visitor_id", visitorId);
+    }
+
+    fetch("/api/track-view", {
+      method: "POST",
+      credentials: "same-origin",
+      keepalive: true,
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ visitorId, path: location.pathname || "/" })
+    }).catch(() => {});
+  } catch (_) {}
+})();
+</script>
+
 </body>
 </html>

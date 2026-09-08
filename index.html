@@ -2234,7 +2234,38 @@
       text-decoration: underline;
     }
 
-  </style>
+  
+    .admin-top-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ffffff, #dbe7ff);
+      color: #111827;
+      border: 1px solid rgba(255,255,255,.26);
+      font-size: 12px;
+      font-weight: 950;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 8px 18px rgba(15,23,42,.12);
+    }
+
+    .admin-top-btn:hover {
+      background: #eef3fb;
+    }
+
+    @media (max-width: 760px) {
+      .admin-top-btn {
+        width: 100%;
+        max-width: 100%;
+        min-height: 58px;
+        border-radius: 18px;
+      }
+    }
+
+</style>
 </head>
 <body>
   <main class="shell">
@@ -2252,6 +2283,7 @@
       <div class="top-actions hidden" id="loggedInActions">
         <span id="userBadge" class="user-chip"></span>
         <span id="totalDealsTrackedBadge" class="user-stat-chip">Total Deals Tracked: 0</span>
+        <a href="/admin.html" id="adminBtn" class="admin-top-btn hidden">Admin</a>
         <button type="button" class="btn-red" id="logoutBtn">Logout</button>
         <input type="file" id="importFile" accept="application/json" style="display:none" />
       </div>
@@ -2822,6 +2854,8 @@
       appView.classList.remove("hidden");
       loggedInActions.classList.remove("hidden");
       userBadge.textContent = state.user?.email || "";
+      const adminBtn = document.getElementById("adminBtn");
+      if (adminBtn) adminBtn.classList.toggle("hidden", !state.user?.isAdmin);
     }
 
     function showLoggedOut() {
@@ -2829,6 +2863,8 @@
       appView.classList.add("hidden");
       loggedInActions.classList.add("hidden");
       userBadge.textContent = "";
+      const adminBtn = document.getElementById("adminBtn");
+      if (adminBtn) adminBtn.classList.add("hidden");
     }
 
     async function loadAppData() {
@@ -3067,5 +3103,26 @@
       showLoggedOut();
     });
   </script>
+
+<script>
+(function () {
+  try {
+    let visitorId = localStorage.getItem("ezdt_visitor_id");
+    if (!visitorId) {
+      visitorId = (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+      localStorage.setItem("ezdt_visitor_id", visitorId);
+    }
+
+    fetch("/api/track-view", {
+      method: "POST",
+      credentials: "same-origin",
+      keepalive: true,
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ visitorId, path: location.pathname || "/" })
+    }).catch(() => {});
+  } catch (_) {}
+})();
+</script>
+
 </body>
 </html>

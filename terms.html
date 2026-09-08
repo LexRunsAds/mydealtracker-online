@@ -205,5 +205,26 @@ a { color: #dbeafe; }
 
     <div class="footer">© 2026 ezDealTrack. All rights reserved.</div>
   </main>
+
+<script>
+(function () {
+  try {
+    let visitorId = localStorage.getItem("ezdt_visitor_id");
+    if (!visitorId) {
+      visitorId = (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+      localStorage.setItem("ezdt_visitor_id", visitorId);
+    }
+
+    fetch("/api/track-view", {
+      method: "POST",
+      credentials: "same-origin",
+      keepalive: true,
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ visitorId, path: location.pathname || "/" })
+    }).catch(() => {});
+  } catch (_) {}
+})();
+</script>
+
 </body>
 </html>
