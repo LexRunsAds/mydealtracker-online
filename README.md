@@ -316,3 +316,26 @@ The new analytics tables are created automatically using `CREATE TABLE IF NOT EX
 ### Historical data note
 Existing total user and deal counts appear immediately because they come from your current tables.
 Page views, successful/failed login analytics, and detailed app events begin accumulating after this update is deployed.
+
+
+## Meta Pixel Update
+
+Meta Pixel ID:
+- `1725971108700692`
+
+Pixel added to:
+- `index.html`
+- `terms.html`
+- `privacy.html`
+
+Pixel intentionally NOT added to:
+- `admin.html`
+
+The Privacy Policy was updated to disclose use of the Meta Pixel.
+
+Safety:
+- No database changes
+- No D1 schema changes
+- No user/deal data changes
+- No auth/session changes
+- No admin analytics changes
