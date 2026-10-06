@@ -2319,11 +2319,88 @@
     .delivery-date-chip { flex:0 0 auto; padding:7px 9px; border-radius:10px; background:rgba(147,197,253,.10); color:#dbeafe; font-size:10px; font-weight:900; text-align:center; }
 
     .analytics-panel { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr); gap:14px; }
-    .performance-chart { display:grid; grid-template-columns:repeat(30,minmax(3px,1fr)); align-items:end; gap:3px; height:180px; padding-top:16px; }
-    .perf-col { min-width:0; height:160px; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:3px; }
-    .perf-bar { width:100%; max-width:18px; min-height:2px; border-radius:5px 5px 2px 2px; background:linear-gradient(180deg,#8bbdff,#2563eb); }
+    .performance-chart-wrap { min-width:0; overflow-x:auto; padding-bottom:2px; scrollbar-width:thin; }
+    .performance-chart {
+      display:grid;
+      grid-template-columns:repeat(30,minmax(24px,1fr));
+      align-items:stretch;
+      gap:3px;
+      height:222px;
+      min-width:780px;
+      padding-top:6px;
+    }
+    .perf-col {
+      min-width:0;
+      height:218px;
+      display:grid;
+      grid-template-rows:24px 1fr 17px 15px;
+      align-items:end;
+      justify-items:center;
+      gap:2px;
+    }
+    .perf-count {
+      align-self:center;
+      min-width:18px;
+      height:18px;
+      padding:0 4px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      color:#5f6d82;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.055);
+      font-size:9px;
+      font-weight:900;
+      line-height:1;
+    }
+    .perf-count.has-sales {
+      color:#f8fbff;
+      background:rgba(96,165,250,.14);
+      border-color:rgba(96,165,250,.28);
+    }
+    .perf-col.paid .perf-count.has-sales {
+      color:#bbf7d0;
+      background:rgba(52,211,153,.12);
+      border-color:rgba(52,211,153,.24);
+    }
+    .perf-bar-zone {
+      width:100%;
+      height:148px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+    }
+    .perf-bar {
+      width:100%;
+      max-width:18px;
+      min-height:2px;
+      border-radius:5px 5px 2px 2px;
+      background:linear-gradient(180deg,#8bbdff,#2563eb);
+    }
     .perf-col.paid .perf-bar { background:linear-gradient(180deg,#9bf2c9,#20a46b); }
-    .chart-axis { display:flex; justify-content:space-between; color:#69768a; font-size:9px; margin-top:7px; }
+    .perf-day {
+      color:#d9e1ee;
+      font-size:9px;
+      font-weight:950;
+      line-height:1;
+      text-align:center;
+    }
+    .perf-date {
+      color:#667489;
+      font-size:8px;
+      font-weight:800;
+      line-height:1;
+      text-align:center;
+      white-space:nowrap;
+    }
+    .chart-axis {
+      min-width:780px;
+      display:flex;
+      justify-content:space-between;
+      color:#69768a;
+      font-size:9px;
+      margin-top:7px;
+    }
     .insight-stack { display:grid; gap:9px; }
     .insight-row { padding:13px; border-radius:14px; background:#111925; border:1px solid rgba(255,255,255,.065); }
     .insight-row span { display:block; color:#7f8ca1; font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:.08em; }
@@ -2331,7 +2408,7 @@
     .insight-row small { display:block; color:#8794a8; font-size:10px; margin-top:3px; }
 
     @media (max-width:1000px) { .command-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.command-grid,.analytics-panel{grid-template-columns:1fr}.command-hero{grid-template-columns:1fr} }
-    @media (max-width:600px) { .command-center{gap:10px}.command-hero{padding:19px;border-radius:20px}.command-metrics{grid-template-columns:1fr 1fr;gap:8px}.metric-card{padding:14px}.metric-value{font-size:26px}.command-card{padding:15px;border-radius:18px}.task-form{grid-template-columns:1fr}.task-add{min-height:43px}.performance-chart{gap:2px;height:150px}.perf-col{height:130px}.priority-item,.delivery-item{align-items:flex-start}.command-card-head{align-items:flex-start} }
+    @media (max-width:600px) { .command-center{gap:10px}.command-hero{padding:19px;border-radius:20px}.command-metrics{grid-template-columns:1fr 1fr;gap:8px}.metric-card{padding:14px}.metric-value{font-size:26px}.command-card{padding:15px;border-radius:18px}.task-form{grid-template-columns:1fr}.task-add{min-height:43px}.performance-chart{gap:3px;height:210px;min-width:780px}.perf-col{height:206px}.perf-bar-zone{height:138px}.priority-item,.delivery-item{align-items:flex-start}.command-card-head{align-items:flex-start} }
 
   </style>
 </head>
@@ -2557,7 +2634,7 @@
         <section class="command-card">
           <div class="command-card-head"><div><h3>30-Day Performance</h3><p><span id="performanceSummary">0 sold • 0 paid</span> over the last 30 days. Green bars indicate days with at least one paid unit.</p></div><span class="tiny-badge">Rolling 30 days</span></div>
           <div class="analytics-panel">
-            <div><div class="performance-chart" id="performanceChart"></div><div class="chart-axis"><span>30 days ago</span><span>Today</span></div></div>
+            <div class="performance-chart-wrap"><div class="performance-chart" id="performanceChart"></div><div class="chart-axis"><span>30 days ago</span><span>Today</span></div></div>
             <div class="insight-stack">
               <div class="insight-row"><span>30-Day Sold</span><strong id="chartSold30">0</strong><small>Deals entered by sale date</small></div>
               <div class="insight-row"><span>30-Day Paid</span><strong id="chartPaid30">0</strong><small>Deals currently marked paid</small></div>
@@ -2667,7 +2744,7 @@
               <div class="stat"><span>Open Items</span><strong id="openItems">0</strong></div>
             </div>
 
-            <p class="footnote">This version saves online to Cloudflare D1 after login.</p>
+            <p class="footnote"></p>
           </aside>
         </div>
       </section>
@@ -2992,7 +3069,15 @@
       const max = Math.max(1, ...rows.map(([,v]) => v.sold));
       document.getElementById("performanceChart").innerHTML = rows.map(([day,v]) => {
         const h = Math.max(v.sold ? 10 : 2, Math.round((v.sold/max)*100));
-        return `<div class="perf-col ${v.paid ? "paid" : ""}" title="${escapeHtml(formatShortDate(day))}: ${v.sold} sold, ${v.paid} paid"><div class="perf-bar" style="height:${h}%"></div></div>`;
+        const chartDate = new Date(`${day}T12:00:00`);
+        const dayLetter = ["S","M","T","W","T","F","S"][chartDate.getDay()];
+        const dateLabel = `${chartDate.getMonth()+1}/${chartDate.getDate()}`;
+        return `<div class="perf-col ${v.paid ? "paid" : ""}" title="${escapeHtml(formatShortDate(day))}: ${v.sold} sold, ${v.paid} paid">
+          <div class="perf-count ${v.sold ? "has-sales" : ""}" aria-label="${v.sold} deals sold">${v.sold}</div>
+          <div class="perf-bar-zone"><div class="perf-bar" style="height:${h}%"></div></div>
+          <div class="perf-day">${dayLetter}</div>
+          <div class="perf-date">${dateLabel}</div>
+        </div>`;
       }).join("");
       const sold30 = rows.reduce((s,[,v])=>s+v.sold,0); const paid30 = rows.reduce((s,[,v])=>s+v.paid,0);
       document.getElementById("performanceSummary").textContent = `${sold30} sold • ${paid30} paid`;

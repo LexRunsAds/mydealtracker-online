@@ -384,3 +384,23 @@ Database safety:
 - `v2_daily_tasks_migration.sql` is included for reference/manual setup.
 
 No Meta Pixel code was added. The working Cloudflare Insights CSP remains intact.
+
+
+## UI Copy Cleanup
+
+Removed the public-facing sentence:
+`This version saves online to Cloudflare D1 after login.`
+
+This is a display-only change. Cloudflare D1 saving behavior is unchanged.
+
+
+## 30-Day Performance Chart Labels
+
+Updated the 30-day performance chart to show:
+- Day-of-week letter for every day: S M T W T F S
+- Calendar date below each day
+- Numeric sold-deal count above each day's bar
+- Paid days remain highlighted in green
+- Horizontal scrolling on narrow/mobile screens so labels stay readable
+
+No database, D1, auth, deal, task, admin, or security changes.
