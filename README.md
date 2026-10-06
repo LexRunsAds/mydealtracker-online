@@ -360,3 +360,27 @@ Preserved:
 - Existing ezDealTrack admin, analytics, auth, Terms, Privacy, and user/deal data behavior
 
 No database or schema changes.
+
+
+## ezDealTrack v2 — Daily Command Center
+
+New logged-in dashboard features:
+- Personalized daily greeting and rotating dealership-sales motivation
+- Daily task planner with completion tracking
+- Paid-unit goal pace (ahead/behind calendar pace)
+- Projected month-end paid units
+- Automatic Today's Priorities from deal data
+- Upcoming undelivered deliveries for the next 7 days
+- Rolling 30-day sales performance chart
+- Last-7-day sold/paid insight
+- Best paid month
+- Best consecutive sales-day streak
+- Today's task completion score
+
+Database safety:
+- Existing users, deals, settings, sessions, security, and analytics tables are unchanged.
+- One additive `daily_tasks` table is used.
+- `/api/tasks` creates that table automatically with `CREATE TABLE IF NOT EXISTS`.
+- `v2_daily_tasks_migration.sql` is included for reference/manual setup.
+
+No Meta Pixel code was added. The working Cloudflare Insights CSP remains intact.

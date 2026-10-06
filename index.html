@@ -2265,7 +2265,75 @@
       }
     }
 
-</style>
+
+    /* ezDealTrack v2 — Daily Command Center */
+    .command-center { display:grid; gap:14px; }
+    .command-hero {
+      position:relative; overflow:hidden; display:grid; grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);
+      gap:20px; align-items:center; padding:24px; border-radius:24px;
+      background:radial-gradient(circle at 90% 10%,rgba(96,165,250,.20),transparent 26%),linear-gradient(135deg,#090d14 0%,#111a28 60%,#173b82 100%);
+      border:1px solid rgba(255,255,255,.09); box-shadow:0 20px 48px rgba(0,0,0,.28);
+    }
+    .command-hero:after { content:""; position:absolute; width:280px; height:280px; border-radius:50%; background:rgba(255,255,255,.045); right:-100px; bottom:-170px; }
+    .command-copy,.motivation-card { position:relative; z-index:1; }
+    .command-kicker { color:#8dbbff; font-size:11px; font-weight:950; letter-spacing:.14em; text-transform:uppercase; }
+    .command-copy h2 { color:#fff; margin:7px 0 7px; font-size:clamp(28px,4vw,42px); letter-spacing:-.055em; }
+    .command-copy p { color:#a9b5c8; margin:0; font-size:14px; font-weight:650; }
+    .motivation-card { padding:16px 18px; border-radius:18px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.10); backdrop-filter:blur(10px); }
+    .motivation-label { color:#93c5fd; font-size:10px; font-weight:950; text-transform:uppercase; letter-spacing:.13em; }
+    .motivation-card blockquote { color:#fff; margin:8px 0 0; font-size:16px; line-height:1.5; font-weight:850; letter-spacing:-.015em; }
+
+    .command-metrics { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+    .metric-card { min-width:0; padding:18px; border-radius:19px; background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01)),#0f1620; border:1px solid rgba(255,255,255,.08); box-shadow:0 13px 28px rgba(0,0,0,.18); }
+    .metric-label { color:#8996aa; font-size:10px; font-weight:950; text-transform:uppercase; letter-spacing:.12em; }
+    .metric-value { color:#fff; font-size:31px; font-weight:950; letter-spacing:-.055em; margin-top:7px; }
+    .metric-sub { color:#93a0b4; font-size:11px; font-weight:750; margin-top:4px; line-height:1.35; }
+    .metric-sub.good { color:#86efac; } .metric-sub.warn { color:#fde68a; }
+
+    .command-grid { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr); gap:14px; }
+    .command-card { min-width:0; background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01)),#0d131b; border:1px solid rgba(255,255,255,.08); border-radius:22px; padding:20px; box-shadow:0 16px 34px rgba(0,0,0,.20); }
+    .command-card-head { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:14px; }
+    .command-card h3 { margin:0; color:#f8fbff; font-size:18px; letter-spacing:-.03em; }
+    .command-card-head p { margin:5px 0 0; color:#8f9baf; font-size:12px; line-height:1.4; }
+    .tiny-badge { flex:0 0 auto; padding:6px 9px; border-radius:999px; background:rgba(147,197,253,.10); border:1px solid rgba(147,197,253,.16); color:#dbeafe; font-size:10px; font-weight:950; }
+
+    .task-form { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px; margin-bottom:11px; }
+    .task-form input { min-width:0; }
+    .task-add { border:0; border-radius:12px; padding:0 15px; min-height:44px; background:linear-gradient(180deg,#fff,#dbe7ff); color:#111827; font-weight:950; cursor:pointer; }
+    .task-list { display:grid; gap:8px; }
+    .task-row { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:10px; align-items:center; padding:10px 11px; background:#111925; border:1px solid rgba(255,255,255,.07); border-radius:13px; }
+    .task-row input[type="checkbox"] { width:18px; height:18px; margin:0; padding:0; accent-color:#93c5fd; }
+    .task-text { color:#eef3fb; font-size:13px; font-weight:760; line-height:1.35; overflow-wrap:anywhere; }
+    .task-row.done .task-text { color:#79869a; text-decoration:line-through; }
+    .task-delete { border:0; background:transparent; color:#718096; font-size:19px; cursor:pointer; line-height:1; padding:2px 5px; }
+    .task-empty { padding:15px; border-radius:13px; background:rgba(255,255,255,.025); color:#7f8ba0; font-size:12px; text-align:center; border:1px dashed rgba(255,255,255,.08); }
+    .task-progress { margin-top:11px; display:flex; gap:9px; align-items:center; color:#8f9baf; font-size:11px; font-weight:800; }
+    .mini-progress { flex:1; height:7px; border-radius:999px; background:rgba(255,255,255,.07); overflow:hidden; }
+    .mini-progress > span { display:block; height:100%; width:0; border-radius:inherit; background:linear-gradient(90deg,#60a5fa,#86efac); }
+
+    .priority-list,.delivery-list { display:grid; gap:8px; }
+    .priority-item,.delivery-item { display:flex; justify-content:space-between; gap:12px; align-items:center; padding:11px 12px; border-radius:13px; background:#111925; border:1px solid rgba(255,255,255,.065); }
+    .priority-item strong,.delivery-item strong { display:block; color:#edf2fb; font-size:12px; }
+    .priority-item span,.delivery-item span { color:#8794a8; font-size:11px; margin-top:2px; display:block; }
+    .priority-count { flex:0 0 auto; min-width:30px; height:30px; border-radius:10px; display:grid; place-items:center; background:rgba(251,191,36,.10); color:#fde68a; font-size:12px; font-weight:950; }
+    .delivery-date-chip { flex:0 0 auto; padding:7px 9px; border-radius:10px; background:rgba(147,197,253,.10); color:#dbeafe; font-size:10px; font-weight:900; text-align:center; }
+
+    .analytics-panel { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr); gap:14px; }
+    .performance-chart { display:grid; grid-template-columns:repeat(30,minmax(3px,1fr)); align-items:end; gap:3px; height:180px; padding-top:16px; }
+    .perf-col { min-width:0; height:160px; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:3px; }
+    .perf-bar { width:100%; max-width:18px; min-height:2px; border-radius:5px 5px 2px 2px; background:linear-gradient(180deg,#8bbdff,#2563eb); }
+    .perf-col.paid .perf-bar { background:linear-gradient(180deg,#9bf2c9,#20a46b); }
+    .chart-axis { display:flex; justify-content:space-between; color:#69768a; font-size:9px; margin-top:7px; }
+    .insight-stack { display:grid; gap:9px; }
+    .insight-row { padding:13px; border-radius:14px; background:#111925; border:1px solid rgba(255,255,255,.065); }
+    .insight-row span { display:block; color:#7f8ca1; font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:.08em; }
+    .insight-row strong { display:block; color:#f8fbff; font-size:19px; margin-top:4px; letter-spacing:-.035em; }
+    .insight-row small { display:block; color:#8794a8; font-size:10px; margin-top:3px; }
+
+    @media (max-width:1000px) { .command-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.command-grid,.analytics-panel{grid-template-columns:1fr}.command-hero{grid-template-columns:1fr} }
+    @media (max-width:600px) { .command-center{gap:10px}.command-hero{padding:19px;border-radius:20px}.command-metrics{grid-template-columns:1fr 1fr;gap:8px}.metric-card{padding:14px}.metric-value{font-size:26px}.command-card{padding:15px;border-radius:18px}.task-form{grid-template-columns:1fr}.task-add{min-height:43px}.performance-chart{gap:2px;height:150px}.perf-col{height:130px}.priority-item,.delivery-item{align-items:flex-start}.command-card-head{align-items:flex-start} }
+
+  </style>
 </head>
 <body>
   <main class="shell">
@@ -2432,6 +2500,72 @@
     </section>
 
     <section class="dashboard hidden" id="appView">
+
+      <section class="command-center" id="commandCenter">
+        <section class="command-hero">
+          <div class="command-copy">
+            <div class="command-kicker">Daily Command Center</div>
+            <h2 id="dailyGreeting">Good morning.</h2>
+            <p id="dailyDateLabel">Your day, your month, and what needs attention — all in one place.</p>
+          </div>
+          <div class="motivation-card">
+            <div class="motivation-label">Today's Sales Focus</div>
+            <blockquote id="dailyMotivation">The month is won one conversation at a time.</blockquote>
+          </div>
+        </section>
+
+        <section class="command-metrics">
+          <article class="metric-card"><div class="metric-label">Paid Units</div><div class="metric-value" id="cmdPaidUnits">0 / 15</div><div class="metric-sub" id="cmdPaidSub">0% of monthly goal</div></article>
+          <article class="metric-card"><div class="metric-label">Goal Pace</div><div class="metric-value" id="cmdGoalPace">—</div><div class="metric-sub" id="cmdPaceSub">Calculating current pace</div></article>
+          <article class="metric-card"><div class="metric-label">Projected Finish</div><div class="metric-value" id="cmdProjected">0</div><div class="metric-sub" id="cmdProjectedSub">Based on this month's pace</div></article>
+          <article class="metric-card"><div class="metric-label">Open Items</div><div class="metric-value" id="cmdOpenItems">0</div><div class="metric-sub" id="cmdOpenSub">Across current-month deals</div></article>
+        </section>
+
+        <section class="command-grid">
+          <article class="command-card">
+            <div class="command-card-head"><div><h3>My Tasks Today</h3><p>Set your plan for the day and check it off as you go.</p></div><span class="tiny-badge" id="taskBadge">0 / 0 done</span></div>
+            <form class="task-form" id="dailyTaskForm">
+              <input type="text" id="dailyTaskInput" maxlength="240" placeholder="Add a task — call unsold leads, confirm delivery, follow up..." autocomplete="off" />
+              <button class="task-add" type="submit">Add Task</button>
+            </form>
+            <div class="task-list" id="dailyTaskList"></div>
+            <div class="task-progress"><span id="taskProgressText">No tasks yet</span><div class="mini-progress"><span id="taskProgressBar"></span></div></div>
+          </article>
+
+          <article class="command-card">
+            <div class="command-card-head"><div><h3>Today's Priorities</h3><p>Automatically pulled from your active deal workflow.</p></div><span class="tiny-badge" id="priorityBadge">Clear</span></div>
+            <div class="priority-list" id="priorityList"></div>
+          </article>
+        </section>
+
+        <section class="command-grid">
+          <article class="command-card">
+            <div class="command-card-head"><div><h3>Upcoming Deliveries</h3><p>Scheduled deliveries over the next 7 days.</p></div><span class="tiny-badge" id="deliveryBadge">0 upcoming</span></div>
+            <div class="delivery-list" id="upcomingDeliveryList"></div>
+          </article>
+
+          <article class="command-card">
+            <div class="command-card-head"><div><h3>Performance Insights</h3><p>Quick personal benchmarks based on your deal history.</p></div></div>
+            <div class="insight-stack">
+              <div class="insight-row"><span>Last 7 Days</span><strong id="insight7Day">0 sold</strong><small id="insight7DaySub">0 paid</small></div>
+              <div class="insight-row"><span>Best Paid Month</span><strong id="insightBestMonth">—</strong><small id="insightBestMonthSub">Build your history to set a record</small></div>
+              <div class="insight-row"><span>Best Sales Streak</span><strong id="insightStreak">0 days</strong><small>Consecutive days with a sold deal</small></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="command-card">
+          <div class="command-card-head"><div><h3>30-Day Performance</h3><p><span id="performanceSummary">0 sold • 0 paid</span> over the last 30 days. Green bars indicate days with at least one paid unit.</p></div><span class="tiny-badge">Rolling 30 days</span></div>
+          <div class="analytics-panel">
+            <div><div class="performance-chart" id="performanceChart"></div><div class="chart-axis"><span>30 days ago</span><span>Today</span></div></div>
+            <div class="insight-stack">
+              <div class="insight-row"><span>30-Day Sold</span><strong id="chartSold30">0</strong><small>Deals entered by sale date</small></div>
+              <div class="insight-row"><span>30-Day Paid</span><strong id="chartPaid30">0</strong><small>Deals currently marked paid</small></div>
+              <div class="insight-row"><span>Task Completion</span><strong id="chartTaskCompletion">0%</strong><small>Today's plan completion</small></div>
+            </div>
+          </div>
+        </section>
+      </section>
       <section class="panel entry-panel">
         <div class="panel-head">
           <div>
@@ -2580,7 +2714,7 @@
   </main>
 
   <script>
-    const state = { user: null, goal: 15, deals: [] };
+    const state = { user: null, goal: 15, deals: [], tasks: [] };
     let authMode = "login";
 
     const authView = document.getElementById("authView");
@@ -2665,6 +2799,229 @@
       const [year, month, day] = dateString.split("-");
       if (!year || !month || !day) return dateString;
       return `${month}/${day}/${year}`;
+    }
+
+
+    const motivationalMessages = [
+      "The month is won one conversation at a time.",
+      "Your next deal is probably sitting inside the next ten calls.",
+      "Activity creates opportunities. Opportunities create units.",
+      "Follow-up is where yesterday's no becomes today's yes.",
+      "One focused hour can change the direction of your entire day.",
+      "Don't wait for traffic. Create your own traffic.",
+      "The best salespeople make consistency look like talent.",
+      "Finish the deal in front of you, then go create the next one.",
+      "A strong month is built before the final week arrives.",
+      "Every clean delivery protects tomorrow's opportunity.",
+      "The scoreboard changes when your activity changes.",
+      "Make the calls you will be glad you made by tonight.",
+      "Stay organized enough to spend your energy selling.",
+      "Momentum starts with the first productive action of the day.",
+      "Work the plan before the day starts working you.",
+      "The next appointment can become the next sold unit.",
+      "What gets followed up gets another chance to close.",
+      "Small wins early in the day create bigger wins later.",
+      "Your pipeline rewards consistency, not intention.",
+      "Keep the promises you made to yesterday's customers.",
+      "The goal is not to feel busy. The goal is to move deals forward.",
+      "One more call. One more appointment. One more opportunity.",
+      "Your pace today determines how much pressure you feel at month-end.",
+      "Clean paperwork and strong follow-up are part of selling more cars.",
+      "Stay in motion. A quiet showroom does not have to mean a quiet day.",
+      "Do the uncomfortable follow-up before the easy distractions.",
+      "A salesperson with a plan has an advantage before the doors open.",
+      "Today's discipline becomes this month's commission.",
+      "The customer you help well today can create tomorrow's referral.",
+      "Control what you can: activity, follow-up, organization, and effort."
+    ];
+
+    function localTodayDate() {
+      const d = new Date();
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    }
+
+    function parseLocalDate(value) {
+      if (!value) return null;
+      const [y,m,d] = String(value).split("-").map(Number);
+      if (!y || !m || !d) return null;
+      return new Date(y, m - 1, d, 12, 0, 0, 0);
+    }
+
+    function dateKey(date) {
+      return `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;
+    }
+
+    function daysBetween(a, b) {
+      const ms = parseLocalDate(b)?.getTime() - parseLocalDate(a)?.getTime();
+      return Number.isFinite(ms) ? Math.round(ms / 86400000) : 0;
+    }
+
+    function formatShortDate(value) {
+      const d = parseLocalDate(value);
+      return d ? d.toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "—";
+    }
+
+    function userFirstName() {
+      const name = String(state.user?.name || "").trim();
+      if (name) return name.split(/\s+/)[0];
+      const email = String(state.user?.email || "");
+      const local = email.split("@")[0].replace(/[._-]+/g, " ").trim();
+      return local ? local.split(/\s+/)[0].replace(/^./, c => c.toUpperCase()) : "there";
+    }
+
+    function dailyMessage() {
+      const start = new Date(new Date().getFullYear(), 0, 0);
+      const index = Math.floor((new Date() - start) / 86400000) % motivationalMessages.length;
+      return motivationalMessages[Math.max(0, index)];
+    }
+
+    function currentMonthRawDeals() {
+      const month = currentMonthValue();
+      return state.deals.filter(d => getMonthValue(d.saleDate) === month);
+    }
+
+    function monthPaceStats() {
+      const today = new Date();
+      const monthDeals = currentMonthRawDeals();
+      const paid = monthDeals.filter(d => d.paid).length;
+      const goal = Math.max(Number(state.goal) || 1, 1);
+      const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+      const day = today.getDate();
+      const expected = goal * day / daysInMonth;
+      const delta = paid - expected;
+      const projected = day > 0 ? paid / day * daysInMonth : 0;
+      return { paid, goal, daysInMonth, day, expected, delta, projected };
+    }
+
+    function getBestPaidMonth() {
+      const counts = new Map();
+      state.deals.filter(d => d.paid && d.saleDate).forEach(d => {
+        const key = getMonthValue(d.saleDate);
+        counts.set(key, (counts.get(key) || 0) + 1);
+      });
+      let best = null;
+      for (const [month, count] of counts) if (!best || count > best.count) best = { month, count };
+      return best;
+    }
+
+    function getBestSalesStreak() {
+      const days = [...new Set(state.deals.map(d => d.saleDate).filter(Boolean))].sort();
+      let best = 0, run = 0, previous = null;
+      for (const day of days) {
+        if (previous && daysBetween(previous, day) === 1) run += 1;
+        else run = 1;
+        best = Math.max(best, run);
+        previous = day;
+      }
+      return best;
+    }
+
+    function lastNDaysDeals(n) {
+      const end = new Date(); end.setHours(12,0,0,0);
+      const start = new Date(end); start.setDate(end.getDate() - (n - 1));
+      return state.deals.filter(d => {
+        const dt = parseLocalDate(d.saleDate);
+        return dt && dt >= start && dt <= end;
+      });
+    }
+
+    function renderDailyHeader() {
+      const hour = new Date().getHours();
+      const part = hour < 12 ? "morning" : hour < 17 ? "afternoon" : "evening";
+      document.getElementById("dailyGreeting").textContent = `Good ${part}, ${userFirstName()}.`;
+      document.getElementById("dailyDateLabel").textContent = new Date().toLocaleDateString(undefined, { weekday:"long", month:"long", day:"numeric", year:"numeric" });
+      document.getElementById("dailyMotivation").textContent = dailyMessage();
+    }
+
+    function renderCommandMetrics() {
+      const p = monthPaceStats();
+      const monthDeals = currentMonthRawDeals();
+      const openItems = monthDeals.reduce((sum,d) => sum + checklistMissing(d).length, 0);
+      const pct = Math.round((p.paid / p.goal) * 100);
+      const delta = Math.round(p.delta * 10) / 10;
+      const paceValue = delta >= 0 ? `+${delta.toFixed(1)}` : delta.toFixed(1);
+      document.getElementById("cmdPaidUnits").textContent = `${p.paid} / ${p.goal}`;
+      document.getElementById("cmdPaidSub").textContent = `${Math.max(0,pct)}% of monthly goal`;
+      document.getElementById("cmdGoalPace").textContent = paceValue;
+      document.getElementById("cmdPaceSub").textContent = delta >= 0 ? "units ahead of calendar pace" : "units behind calendar pace";
+      document.getElementById("cmdPaceSub").className = `metric-sub ${delta >= 0 ? "good" : "warn"}`;
+      document.getElementById("cmdProjected").textContent = Number.isFinite(p.projected) ? p.projected.toFixed(1) : "0";
+      document.getElementById("cmdProjectedSub").textContent = `at the current ${p.day}-day pace`;
+      document.getElementById("cmdOpenItems").textContent = openItems;
+      document.getElementById("cmdOpenSub").textContent = openItems ? "checklist items still need attention" : "current-month deals are clean";
+    }
+
+    function renderPriorities() {
+      const today = localTodayDate();
+      const previousMonth = (() => { const d = new Date(); d.setMonth(d.getMonth()-1); return `${d.getFullYear()}-${pad(d.getMonth()+1)}`; })();
+      const currentMonth = currentMonthValue();
+      const deliveriesToday = state.deals.filter(d => d.deliveryDate === today && !(d.delivered || d.status === "Delivered"));
+      const overdue = state.deals.filter(d => d.deliveryDate && d.deliveryDate < today && !(d.delivered || d.status === "Delivered"));
+      const unpaidDelivered = state.deals.filter(d => (d.delivered || d.status === "Delivered") && !d.paid);
+      const olderPending = state.deals.filter(d => getMonthValue(d.saleDate) < currentMonth && !(d.delivered || d.status === "Delivered"));
+      const missingDocs = currentMonthRawDeals().filter(d => checklistMissing(d).length >= 3);
+      const items = [
+        ["Deliveries due today", deliveriesToday.length, "Confirm today's handoffs and final steps."],
+        ["Overdue deliveries", overdue.length, "Scheduled date passed and deal is not marked delivered."],
+        ["Delivered but unpaid", unpaidDelivered.length, "Keep an eye on funding and paid status."],
+        ["Prior-month pending", olderPending.length, "Older deals still need to cross the finish line."],
+        ["Deals with 3+ open items", missingDocs.length, "These deals have the most checklist work remaining."]
+      ].filter(x => x[1] > 0);
+      const list = document.getElementById("priorityList");
+      const total = items.reduce((s,x)=>s+x[1],0);
+      document.getElementById("priorityBadge").textContent = total ? `${total} items` : "Clear";
+      list.innerHTML = items.length ? items.map(([title,count,sub]) => `<div class="priority-item"><div><strong>${escapeHtml(title)}</strong><span>${escapeHtml(sub)}</span></div><div class="priority-count">${count}</div></div>`).join("") : `<div class="task-empty">You're clear right now. Keep the board clean and go create the next opportunity.</div>`;
+    }
+
+    function renderUpcomingDeliveries() {
+      const today = localTodayDate();
+      const max = new Date(); max.setHours(12,0,0,0); max.setDate(max.getDate()+7);
+      const maxKey = dateKey(max);
+      const upcoming = state.deals.filter(d => d.deliveryDate && d.deliveryDate >= today && d.deliveryDate <= maxKey && !(d.delivered || d.status === "Delivered"))
+        .sort((a,b) => String(a.deliveryDate).localeCompare(String(b.deliveryDate))).slice(0,8);
+      document.getElementById("deliveryBadge").textContent = `${upcoming.length} upcoming`;
+      document.getElementById("upcomingDeliveryList").innerHTML = upcoming.length ? upcoming.map(d => `<div class="delivery-item"><div><strong>${escapeHtml(d.customerName || "Unnamed Customer")}</strong><span>${escapeHtml(d.stockNumber || "No stock #")} • ${escapeHtml(d.vehicleType || "Vehicle")}</span></div><div class="delivery-date-chip">${d.deliveryDate === today ? "TODAY" : escapeHtml(formatShortDate(d.deliveryDate))}</div></div>`).join("") : `<div class="task-empty">No undelivered deals are scheduled in the next 7 days.</div>`;
+    }
+
+    function renderPerformance() {
+      const today = new Date(); today.setHours(12,0,0,0);
+      const counts = new Map();
+      for (let i=29;i>=0;i--) { const d=new Date(today); d.setDate(today.getDate()-i); counts.set(dateKey(d), {sold:0,paid:0}); }
+      state.deals.forEach(d => { const bucket=counts.get(d.saleDate); if (bucket) { bucket.sold += 1; if (d.paid) bucket.paid += 1; } });
+      const rows = [...counts.entries()];
+      const max = Math.max(1, ...rows.map(([,v]) => v.sold));
+      document.getElementById("performanceChart").innerHTML = rows.map(([day,v]) => {
+        const h = Math.max(v.sold ? 10 : 2, Math.round((v.sold/max)*100));
+        return `<div class="perf-col ${v.paid ? "paid" : ""}" title="${escapeHtml(formatShortDate(day))}: ${v.sold} sold, ${v.paid} paid"><div class="perf-bar" style="height:${h}%"></div></div>`;
+      }).join("");
+      const sold30 = rows.reduce((s,[,v])=>s+v.sold,0); const paid30 = rows.reduce((s,[,v])=>s+v.paid,0);
+      document.getElementById("performanceSummary").textContent = `${sold30} sold • ${paid30} paid`;
+      document.getElementById("chartSold30").textContent = sold30;
+      document.getElementById("chartPaid30").textContent = paid30;
+
+      const last7 = lastNDaysDeals(7); const last7Paid = last7.filter(d=>d.paid).length;
+      document.getElementById("insight7Day").textContent = `${last7.length} sold`;
+      document.getElementById("insight7DaySub").textContent = `${last7Paid} paid in the last 7 days`;
+      const best = getBestPaidMonth();
+      if (best) { document.getElementById("insightBestMonth").textContent = `${best.count} units`; document.getElementById("insightBestMonthSub").textContent = formatMonthLabel(best.month); }
+      else { document.getElementById("insightBestMonth").textContent = "—"; document.getElementById("insightBestMonthSub").textContent = "Build your history to set a record"; }
+      const streak = getBestSalesStreak(); document.getElementById("insightStreak").textContent = `${streak} day${streak===1?"":"s"}`;
+    }
+
+    function renderTasks() {
+      const list = document.getElementById("dailyTaskList");
+      const tasks = state.tasks || [];
+      const done = tasks.filter(t=>t.completed).length;
+      const pct = tasks.length ? Math.round((done/tasks.length)*100) : 0;
+      document.getElementById("taskBadge").textContent = `${done} / ${tasks.length} done`;
+      document.getElementById("taskProgressText").textContent = tasks.length ? `${pct}% complete` : "No tasks yet";
+      document.getElementById("taskProgressBar").style.width = `${pct}%`;
+      document.getElementById("chartTaskCompletion").textContent = `${pct}%`;
+      list.innerHTML = tasks.length ? tasks.map(t => `<div class="task-row ${t.completed?"done":""}"><input type="checkbox" ${t.completed?"checked":""} onchange="toggleDailyTask('${t.id}', this.checked)" aria-label="Mark task complete"><div class="task-text">${escapeHtml(t.text)}</div><button type="button" class="task-delete" onclick="deleteDailyTask('${t.id}')" aria-label="Delete task">×</button></div>`).join("") : `<div class="task-empty">Add your first priority for today. Keep it specific and actionable.</div>`;
+    }
+
+    function renderCommandCenter() {
+      renderDailyHeader(); renderCommandMetrics(); renderPriorities(); renderUpcomingDeliveries(); renderPerformance(); renderTasks();
     }
 
     function checklistMissing(deal) {
@@ -2812,6 +3169,7 @@
 
       emptyState.style.display = monthDeals.length || previousPendingDeals.length || globalSearchDeals.length ? "none" : "block";
       updateStats();
+      renderCommandCenter();
     }
 
     function updateStats() {
@@ -2868,9 +3226,15 @@
     }
 
     async function loadAppData() {
-      const [dealsData, settingsData] = await Promise.all([api("/api/deals"), api("/api/settings")]);
+      const taskDate = localTodayDate();
+      const [dealsData, settingsData, tasksData] = await Promise.all([
+        api("/api/deals"),
+        api("/api/settings"),
+        api(`/api/tasks?date=${encodeURIComponent(taskDate)}`)
+      ]);
       state.deals = dealsData.deals || [];
       state.goal = settingsData.monthlyGoal || 15;
+      state.tasks = tasksData.tasks || [];
       goalInput.value = state.goal;
       render();
     }
@@ -2963,8 +3327,43 @@
       await api("/api/auth/logout", { method: "POST", body: "{}" });
       state.user = null;
       state.deals = [];
+      state.tasks = [];
       showLoggedOut();
     });
+
+
+    document.getElementById("dailyTaskForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const input = document.getElementById("dailyTaskInput");
+      const text = input.value.trim();
+      if (!text) return;
+      const btn = this.querySelector("button[type='submit']");
+      btn.disabled = true;
+      try {
+        await api("/api/tasks", { method:"POST", body:JSON.stringify({ taskDate: localTodayDate(), text }) });
+        input.value = "";
+        const data = await api(`/api/tasks?date=${encodeURIComponent(localTodayDate())}`);
+        state.tasks = data.tasks || [];
+        renderTasks();
+      } catch (error) { alert(error.message); }
+      finally { btn.disabled = false; }
+    });
+
+    window.toggleDailyTask = async function(id, completed) {
+      try {
+        await api("/api/tasks", { method:"PUT", body:JSON.stringify({ id, completed }) });
+        const task = state.tasks.find(t=>t.id===id); if (task) task.completed = completed;
+        renderTasks();
+      } catch (error) { alert(error.message); await loadAppData(); }
+    };
+
+    window.deleteDailyTask = async function(id) {
+      try {
+        await api(`/api/tasks?id=${encodeURIComponent(id)}`, { method:"DELETE" });
+        state.tasks = state.tasks.filter(t=>t.id!==id);
+        renderTasks();
+      } catch (error) { alert(error.message); }
+    };
 
     dealForm.addEventListener("submit", async function(e) {
       e.preventDefault();
