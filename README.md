@@ -404,3 +404,10 @@ Updated the 30-day performance chart to show:
 - Horizontal scrolling on narrow/mobile screens so labels stay readable
 
 No database, D1, auth, deal, task, admin, or security changes.
+
+
+## Edit Deal Scroll Fix
+
+Clicking **Edit** on a deal now scrolls directly to the Add/Edit Sold Deal form instead of the top of the website.
+
+No database, D1, task, analytics, admin, authentication, or security changes.

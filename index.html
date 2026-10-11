@@ -252,6 +252,7 @@
     }
 
     .panel-body { padding: 18px; }
+    #dealEditorSection { scroll-margin-top: 16px; }
 
     .auth-wrap {
       max-width: 1260px;
@@ -2643,7 +2644,7 @@
           </div>
         </section>
       </section>
-      <section class="panel entry-panel">
+      <section class="panel entry-panel" id="dealEditorSection">
         <div class="panel-head">
           <div>
             <h2>Add Sold Deal</h2>
@@ -3512,7 +3513,10 @@
       fields.notes.value = deal.notes || "";
 
       document.getElementById("saveBtn").textContent = "Update Deal";
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      const editorSection = document.getElementById("dealEditorSection");
+      if (editorSection) {
+        editorSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     };
 
     window.deleteDeal = async function(id) {
