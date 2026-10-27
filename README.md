@@ -411,3 +411,27 @@ No database, D1, auth, deal, task, admin, or security changes.
 Clicking **Edit** on a deal now scrolls directly to the Add/Edit Sold Deal form instead of the top of the website.
 
 No database, D1, task, analytics, admin, authentication, or security changes.
+
+
+## Favicon + Legal Page Cleanup
+
+Base package:
+- `ezdealtrack_v2_edit_scroll_fix.zip`
+
+Added favicon assets:
+- `favicon.ico`
+- `favicon-32x32.png`
+- `favicon-192x192.png`
+- `apple-touch-icon.png`
+
+Favicon links added to:
+- `index.html`
+- `admin.html`
+- `terms.html`
+- `privacy.html`
+
+Removed:
+- Terms page general-business-draft / attorney-review disclaimer
+- Privacy Policy general-business-draft / legal-review disclaimer
+
+No database, D1, auth, session, task, analytics, admin, or security changes.
