@@ -249,3 +249,46 @@ body.ez-landing-mode .landing-v4 .hero-copy .lead { color:#60716d !important; }
 body.ez-landing-mode .landing-v4 .hero-copy h1 { color:#152522 !important; }
 body.ez-landing-mode .landing-v4 .hero-copy h1 em { color:#27834f !important; }
 body.ez-landing-mode .landing-v4 .hero-copy .eyebrow { color:#2e8752 !important; }
+/* v4 small layout polish: heading and close icon */
+body.ez-landing-mode .landing-v4 .hero-copy h1 .hero-final-line {
+  display:block;
+  white-space:nowrap;
+  font-size:clamp(33px,3.7vw,55px);
+  letter-spacing:-.065em;
+}
+@media (min-width:691px) and (max-width:1000px) {
+  body.ez-landing-mode .landing-v4 .hero-copy h1 .hero-final-line {
+    font-size:clamp(44px,6vw,59px);
+  }
+}
+@media (max-width:690px) {
+  body.ez-landing-mode .landing-v4 .hero-copy h1 .hero-final-line {
+    font-size:clamp(27px,7.5vw,48px);
+  }
+}
+body.ez-landing-mode .landing-v4 .ez-auth-close {
+  position:sticky;
+  top:12px;
+  left:auto;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:none;
+  width:36px;
+  height:36px;
+  padding:0;
+  margin:12px 14px -48px auto;
+  font-size:0;
+  line-height:0;
+}
+body.ez-landing-mode .landing-v4 .ez-auth-close svg {
+  display:block;
+  flex:none;
+  width:18px;
+  height:18px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2.15;
+  stroke-linecap:round;
+}
