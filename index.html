@@ -910,7 +910,7 @@
       .card-actions button { flex: 1; }
     }
   
-    /* LexRunsAds-inspired direct-response front page refresh */
+    /* Original front page styles (superseded by landing v4) */
     html { scroll-behavior: smooth; }
 
     body {
@@ -997,8 +997,7 @@
       border-radius: 34px;
       background:
         linear-gradient(135deg, rgba(15, 23, 42, .94), rgba(30, 58, 138, .94)),
-        radial-gradient(circle at top right, rgba(255,255,255,.16), transparent 38%);
-      color: #fff;
+        radial-gradient(circle at top right, rgba(255,255,255,.16), transparent 38%);      color: #fff;
       box-shadow: 0 24px 60px rgba(15, 23, 42, .18);
       border: 1px solid rgba(255,255,255,.10);
     }
@@ -1997,8 +1996,7 @@
 
     .btn-dark {
       background: #f8fbff;
-      color: #111827;
-      border: 1px solid #dce5f2;
+      color: #111827;      border: 1px solid #dce5f2;
     }
 
     .btn-primary {
@@ -2418,8 +2416,9 @@
 
   </style>
   <link rel="stylesheet" href="/ezdealtrack-modern-v3.css" />
+  <link rel="stylesheet" href="/ezdealtrack-landing-v4.css" />
 </head>
-<body class="ez-v3-app">
+<body class="ez-v3-app ez-landing-mode">
   <main class="shell">
     <header class="topbar">
       <div class="brand-wrap">
@@ -2441,155 +2440,94 @@
       </div>
     </header>
 
-    <section class="auth-wrap" id="authView">
-      <div class="landing-hero">
-        <div class="hero-copy">
-          <div class="hero-label">Dealership Deal Management</div>
-          <h2>
-            <span>Your Deals.</span>
-            <span>Your Deliveries.</span>
-            <span>Your Month.</span>
-          </h2>
-          <p class="hero-lead">
-            Stay organized after the sale. Track what has been completed, what still needs attention,
-            and what has to happen before the deal is fully finalized.
-          </p>
-
-          <div class="hero-actions">
-            <a class="hero-button primary" href="#login-panel">Start Tracking Deals</a>
-            <a class="hero-button secondary" href="#why-it-works">Why It Helps</a>
-          </div>
-
-          <div class="trust-row">
-            <div>
-              <strong>Built apart from your CRM</strong>
-              <small>Simple enough to actually use every day.</small>
+    <section class="auth-wrap landing-v4" id="authView">
+<div class="topline"></div>
+<nav aria-label="Main navigation" class="nav"><div class="container nav-row">
+<a class="brand" href="#top"><span aria-hidden="true" class="mark">eZ</span><span>ez<em>Deal</em>Track</span></a>
+<div class="nav-links"><a href="#features">Why ezDealTrack</a><a href="#walkthrough">See it in action</a><a href="#how-it-works">How it works</a></div>
+<div class="nav-actions"><button class="nav-login" data-auth-open="login" type="button">Log in</button>
+<button class="action" data-auth-open="register" type="button">Get started <span aria-hidden="true" class="arrow">↗</span></button></div>
+</div></nav><div class="landing-main" id="top">
+<section class="hero"><div aria-hidden="true" class="orbit"></div><div class="container hero-grid">
+<div class="hero-copy"><div class="eyebrow">Built for automotive salespeople</div><h1>More selling.<br/><em>Less chasing.</em><br/>Every deal in view.</h1>
+<p class="lead">Stay ahead of deliveries, unfinished deal details, daily tasks, and monthly goals—without another complicated CRM.</p>
+<div class="cta"><button class="action" data-auth-open="register" type="button">Start tracking deals <span aria-hidden="true" class="arrow">↗</span></button>
+<a class="action secondary" href="#walkthrough">See how it works <span aria-hidden="true" class="arrow">↓</span></a></div>
+<div class="perks"><span>Built around your deals</span><span>Daily priorities</span><span>Know your numbers</span></div></div>
+<div class="hero-ui" id="heroVisual"><div class="dashboard">
+<div class="ui-top"><div class="ui-brand">ez<em>Deal</em>Track <span style="font-size:9px;color:#8b9b91;font-weight:500;margin-left:5px"> / Workspace</span></div><div class="ui-nav"><b>Overview</b><span>Deals</span><span>Performance</span></div><span class="sample-label">Example dashboard</span></div>
+<div class="ui-title"><div><h3>Your sales overview</h3><small>Example metrics · A clearer view of your month</small></div><span class="pill">● On pace</span></div>
+<div class="ui-kpis"><div class="ui-kpi"><span>Paid units</span><strong id="heroPaid">12<small> / 15</small></strong><small>80% to goal</small></div><div class="ui-kpi"><span>Open items</span><strong>04</strong><small>Keep things moving</small></div><div class="ui-kpi"><span>Projected finish</span><strong>17.2</strong><small>Units this month</small></div></div>
+<div class="ui-lower"><div class="ui-plot" id="heroChart"><b>30-day performance</b><span class="mini-note">30-day trend</span><div class="ui-chart"><i class="ui-bar" style="--h:32%"></i><i class="ui-bar" style="--h:61%"></i><i class="ui-bar" style="--h:44%"></i><i class="ui-bar" style="--h:86%"></i><i class="ui-bar" style="--h:54%"></i><i class="ui-bar" style="--h:74%"></i><i class="ui-bar" style="--h:45%"></i><i class="ui-bar" style="--h:99%"></i><i class="ui-bar" style="--h:67%"></i><i class="ui-bar" style="--h:80%"></i></div><div class="ui-days"><span>MON</span><span>WED</span><span>FRI</span><span>SUN</span><span>TUE</span></div></div>
+<div class="ui-tasks"><b>Today's priorities</b><div class="taskline"><span class="check">✓</span>Confirm two deliveries</div><div class="taskline"><span class="check">✓</span>Finish paperwork</div><div class="taskline"><span class="check">·</span>Follow up on open items</div></div></div>
+</div><div class="float-metric" id="heroFloat"><span class="float-icon">↗</span><div><strong>Goal pace: +1.4 ahead</strong><small>Everything you need, one view</small></div></div></div>
+</div></section>
+<div class="proof"><div class="container proof-grid"><div><i>✓</i> Track every deal</div><div><i>✓</i> Plan the day</div><div><i>✓</i> Own your month</div><div><i>✓</i> Stay organized</div></div></div>
+<section class="features" id="features"><div class="container"><div class="section-heading reveal"><div class="eyebrow" style="justify-content:center">The workflow advantage</div><h2>Everything after the handshake.<br/>Beautifully organized.</h2><p>Powerful enough to keep you on pace. Simple enough to use every day.</p></div>
+<div class="feature-grid"><article class="feature-card reveal"><div class="ico">✓</div><h3>Deal checklists</h3><p>Keep track of insurance, registration, gas, detail, delivery, payment, and what's still missing.</p></article><article class="feature-card reveal"><div class="ico">▣</div><h3>Delivery tracking</h3><p>See what's coming up, what's overdue, and what still needs to happen before delivery.</p></article><article class="feature-card reveal"><div class="ico">↗</div><h3>Sales analytics</h3><p>Measure paid units, monthly goal pace, projected finish, and performance over time.</p></article><article class="feature-card reveal"><div class="ico">☷</div><h3>Daily priorities</h3><p>Plan your day, check off tasks, and keep the activities that matter front and center.</p></article></div>
+</div></section>
+<section class="story" id="walkthrough"><div class="container story-grid">
+<div class="story-pin"><div class="story-top"><div class="eyebrow">Explore the platform</div><div class="pill">Scroll to explore ↓</div></div><div class="story-screen" id="storyScreen"><div class="screen-header"><span>ezDealTrack / Your workspace</span><b id="screenMode">01 — TRACK</b></div><div class="story-heading" id="screenTitle">Your deals, organized.</div><div class="story-sub" id="screenSubtitle">Follow the progress of every deal with less guesswork.</div><div class="story-graph" id="storyGraph"><i class="storybar" style="--h:55%"></i><i class="storybar" style="--h:88%"></i><i class="storybar" style="--h:62%"></i><i class="storybar" style="--h:100%"></i><i class="storybar" style="--h:70%"></i><i class="storybar" style="--h:85%"></i><i class="storybar" style="--h:66%"></i><i class="storybar" style="--h:96%"></i></div><div class="story-status"><span id="screenMetricLabel">Deals tracked</span><strong id="screenMetric">35</strong></div></div><div class="story-progress"><span id="storyProgress"></span></div></div>
+<div class="story-steps" id="how-it-works"><div class="story-intro reveal"><div class="eyebrow">Meet your daily command center</div><h2>Watch your workflow<br/>come together.</h2><p>Scroll to see how ezDealTrack keeps the right information in view.</p></div><div class="step active" data-step="0"><div class="step-label">01 / TRACK</div><h3>Log it once.<br/>Know where it stands.</h3><p>From sold date to delivery and payment, your deals stay organized in one clean workspace.</p></div><div class="step" data-step="1"><div class="step-label">02 / PRIORITIZE</div><h3>Give every day<br/>a clear plan.</h3><p>See what needs attention, build a daily task list, and check items off as the day moves forward.</p></div><div class="step" data-step="2"><div class="step-label">03 / IMPROVE</div><h3>See your pace.<br/>Own your results.</h3><p>Track goal progress, understand your month, and spot opportunities to finish stronger.</p></div></div>
+</div></section>
+<section class="ending" id="get-started"><div class="container reveal"><div class="eyebrow" style="justify-content:center">Your next month starts here</div><h2>More clarity.<br/>Better selling days.</h2><p>A personal workspace built for salespeople who want to stay ahead.</p><div class="cta"><button class="action" data-auth-open="register" type="button">Create your account <span aria-hidden="true" class="arrow">↗</span></button>
+<button class="action secondary" data-auth-open="login" type="button">Already a member? Log in</button></div></div></section>
+<section class="final"><div class="container final-row"><div><h2>Own your month.</h2><p>Less busywork. More momentum.</p></div><button class="action lime" data-auth-open="register" type="button">Get started <span aria-hidden="true" class="arrow">↗</span></button></div></section>
+</div>
+<dialog id="authDialog" class="ez-auth-dialog" aria-label="ezDealTrack account access">
+<button type="button" class="ez-auth-close" id="closeAuthDialog" aria-label="Close account form">×</button>
+<div class="panel auth-card" id="login-panel">
+<div class="auth-card-header">
+<div class="auth-card-badge">Secure Account Access</div>
+<h3>Access Your Workspace</h3>
+<p>Log in or create your account to manage sold deals, delivery steps, paid units, and monthly performance.</p>
+</div>
+<div class="auth-toggle">
+<button class="active" id="loginTab" type="button">Login</button>
+<button id="registerTab" type="button">Register</button>
+</div>
+<form class="form-grid" id="authForm">
+<div class="hidden" id="nameField">
+<label for="authName">Name</label>
+<input autocomplete="name" id="authName" maxlength="80" placeholder="Your name" type="text"/>
+</div>
+<div>
+<label for="authEmail">Email</label>
+<input autocomplete="email" id="authEmail" maxlength="254" placeholder="you@email.com" required="" type="email"/>
+</div>
+<div>
+<label for="authPassword">Password</label>
+<input autocomplete="current-password" id="authPassword" maxlength="128" minlength="8" placeholder="Minimum 8 characters" required="" type="password"/>
+</div>
+<div class="hidden" id="confirmPasswordField">
+<label for="authPasswordConfirm">Confirm Password</label>
+<input autocomplete="new-password" id="authPasswordConfirm" maxlength="128" minlength="8" placeholder="Type password again" type="password"/>
+</div>
+<div class="register-disclaimer hidden" id="registerDisclaimer">
+<strong>Important:</strong> Password reset is not available yet. Please save your password somewhere safe. If you forget your password, you may not be able to access this account or its saved deal data.
             </div>
-            <div>
-              <strong>Delivery checklist focused</strong>
-              <small>Know what is done and what is missing.</small>
-            </div>
-            <div>
-              <strong>Monthly paid unit tracking</strong>
-              <small>Keep your goal in front of you.</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel auth-card" id="login-panel">
-          <div class="auth-card-header">
-            <div class="auth-card-badge">Secure Account Access</div>
-            <h3>Access Your Workspace</h3>
-            <p>Log in or create your account to manage sold deals, delivery steps, paid units, and monthly performance.</p>
-          </div>
-
-          <div class="auth-toggle">
-            <button type="button" id="loginTab" class="active">Login</button>
-            <button type="button" id="registerTab">Register</button>
-          </div>
-
-          <form id="authForm" class="form-grid">
-            <div id="nameField" class="hidden">
-              <label for="authName">Name</label>
-              <input type="text" id="authName" placeholder="Your name" maxlength="80" autocomplete="name" />
-            </div>
-
-            <div>
-              <label for="authEmail">Email</label>
-              <input type="email" id="authEmail" placeholder="you@email.com" maxlength="254" autocomplete="email" required />
-            </div>
-
-            <div>
-              <label for="authPassword">Password</label>
-              <input type="password" id="authPassword" placeholder="Minimum 8 characters" minlength="8" maxlength="128" autocomplete="current-password" required />
-            </div>
-
-            <div id="confirmPasswordField" class="hidden">
-              <label for="authPasswordConfirm">Confirm Password</label>
-              <input type="password" id="authPasswordConfirm" placeholder="Type password again" minlength="8" maxlength="128" autocomplete="new-password" />
-            </div>
-
-            <div id="registerDisclaimer" class="register-disclaimer hidden">
-              <strong>Important:</strong> Password reset is not available yet. Please save your password somewhere safe. If you forget your password, you may not be able to access this account or its saved deal data.
-            </div>
-
-            <label id="legalAgreementField" class="legal-agreement hidden">
-              <input type="checkbox" id="legalAgreement" />
-              <span>
+<label class="legal-agreement hidden" id="legalAgreementField">
+<input id="legalAgreement" type="checkbox"/>
+<span>
                 I have read and agree to the
-                <a href="/terms.html" target="_blank" rel="noopener">ezDealTrack Terms and Conditions</a>
+                <a href="/terms.html" rel="noopener" target="_blank">ezDealTrack Terms and Conditions</a>
                 and
-                <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+                <a href="/privacy.html" rel="noopener" target="_blank">Privacy Policy</a>.
                 I understand that password recovery may not be available, ezDealTrack should not be used as the sole permanent record of important business data, and free access is not guaranteed indefinitely.
               </span>
-            </label>
-
-            <button type="submit" class="btn-primary auth-submit" id="authSubmit">Login</button>
-            <div class="status-msg" id="authMsg"></div>
-          </form>
-        </div>
-      </div>
-
-      <section class="why-section" id="why-it-works">
-        <div class="section-heading">
-          <div class="section-kicker">Why Salespeople Use It</div>
-          <h2>Because sold does not always mean finished.</h2>
-          <p>
-            Your CRM holds the customer record. ezDealTrack keeps your personal deal workflow clean,
-            consistent, and easy to review at a glance.
-          </p>
-        </div>
-
-        <div class="why-grid">
-          <article class="why-card">
-            <span class="why-number">01</span>
-            <h3>No more mental notes</h3>
-            <p>Stop relying on memory, sticky notes, or scattered reminders. Every deal has a clear checklist for what has been handled and what still needs to be done.</p>
-          </article>
-
-          <article class="why-card">
-            <span class="why-number">02</span>
-            <h3>Built around finalizing deals</h3>
-            <p>Insurance, gas, registration, inspection, detail, delivery, and paid status are all visible so nothing gets lost after the customer says yes.</p>
-          </article>
-
-          <article class="why-card">
-            <span class="why-number">03</span>
-            <h3>Separate from the CRM</h3>
-            <p>This is your personal control center. It does not replace the CRM — it gives you a faster daily view of what you need to move across the finish line.</p>
-          </article>
-
-          <article class="why-card">
-            <span class="why-number">04</span>
-            <h3>Know your month</h3>
-            <p>Track sold units, delivered units, pending deals, open items, and paid units so your goal is always clear without digging through reports.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="numbers-section">
-        <div class="numbers-card">
-          <strong>1 place</strong>
-          <span>for your active sold deals</span>
-        </div>
-        <div class="numbers-card">
-          <strong>7 checkpoints</strong>
-          <span>to keep the deal moving</span>
-        </div>
-        <div class="numbers-card">
-          <strong>0 guesswork</strong>
-          <span>when reviewing what needs attention</span>
-        </div>
-      </section>
-    </section>
-
+</label>
+<button class="btn-primary auth-submit" id="authSubmit" type="submit">Login</button>
+<div class="status-msg" id="authMsg"></div>
+</form>
+</div>
+</dialog>
+</section>
     <section class="dashboard hidden" id="appView">
       <nav class="workspace-tabs" aria-label="Workspace sections">
         <a href="#commandCenter">Overview</a>
         <a href="#dealEditorSection">Add / Edit Deal</a>
         <a href="#soldDealsSection">Sold Deals</a>
       </nav>
-
 
       <section class="command-center" id="commandCenter">
         <section class="command-hero">
@@ -2792,9 +2730,7 @@
     </section>
 
     <footer class="site-credit">
-      <div>
-        Platform Design By <a href="https://LexRunsAds.com" target="_blank" rel="noopener">LexRunsAds.com</a>
-      </div>
+      <div>© 2026 ezDealTrack. All rights reserved.</div>
       <div class="legal-footer-links">
         <a href="/terms.html">Terms &amp; Conditions</a>
         <span>•</span>
@@ -3059,8 +2995,7 @@
       ].filter(x => x[1] > 0);
       const list = document.getElementById("priorityList");
       const total = items.reduce((s,x)=>s+x[1],0);
-      document.getElementById("priorityBadge").textContent = total ? `${total} items` : "Clear";
-      list.innerHTML = items.length ? items.map(([title,count,sub]) => `<div class="priority-item"><div><strong>${escapeHtml(title)}</strong><span>${escapeHtml(sub)}</span></div><div class="priority-count">${count}</div></div>`).join("") : `<div class="task-empty">You're clear right now. Keep the board clean and go create the next opportunity.</div>`;
+      document.getElementById("priorityBadge").textContent = total ? `${total} items` : "Clear";      list.innerHTML = items.length ? items.map(([title,count,sub]) => `<div class="priority-item"><div><strong>${escapeHtml(title)}</strong><span>${escapeHtml(sub)}</span></div><div class="priority-count">${count}</div></div>`).join("") : `<div class="task-empty">You're clear right now. Keep the board clean and go create the next opportunity.</div>`;
     }
 
     function renderUpcomingDeliveries() {
@@ -3306,6 +3241,9 @@
     }
 
     function showLoggedIn() {
+      document.body.classList.remove("ez-landing-mode");
+      const authDialog = document.getElementById("authDialog");
+      if (authDialog?.open) authDialog.close();
       authView.classList.add("hidden");
       appView.classList.remove("hidden");
       loggedInActions.classList.remove("hidden");
@@ -3315,6 +3253,7 @@
     }
 
     function showLoggedOut() {
+      document.body.classList.add("ez-landing-mode");
       authView.classList.remove("hidden");
       appView.classList.add("hidden");
       loggedInActions.classList.add("hidden");
@@ -3624,5 +3563,45 @@
 })();
 </script>
 
+<script>
+(function(){
+  const dialog = document.getElementById("authDialog");
+  if (!dialog) return;
+  function openAuth(mode){
+    setAuthMode(mode === "register" ? "register" : "login");
+    if (!dialog.open) dialog.showModal();
+    document.getElementById("authEmail")?.focus({preventScroll:true});
+  }
+  document.querySelectorAll("#authView [data-auth-open]").forEach(button => {
+    button.addEventListener("click", () => openAuth(button.dataset.authOpen));
+  });
+  document.getElementById("closeAuthDialog")?.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+})();
+</script>
+
+<script>
+(function(){
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls=[...document.querySelectorAll('.reveal')];
+  if(reduced){revealEls.forEach(el=>el.classList.add('visible'));document.querySelectorAll('.storybar,.ui-bar').forEach(x=>x.style.transform='scaleY(1)');return;}
+  const revealObserver=new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -35px 0px'});
+  revealEls.forEach(x=>revealObserver.observe(x));
+  const steps=[...document.querySelectorAll('.step')], story=document.querySelector('.story'), storyBars=[...document.querySelectorAll('.storybar')], heroBars=[...document.querySelectorAll('.ui-bar')];
+  const stage=[
+    {tag:'01 — TRACK',title:'Your deals, organized.',sub:'Follow the progress of every deal with less guesswork.',label:'Deals tracked',value:35},
+    {tag:'02 — PRIORITIZE',title:'Your day, simplified.',sub:'The next important action is always clear.',label:'Tasks completed',value:'4 / 5'},
+    {tag:'03 — IMPROVE',title:'Your progress, visible.',sub:'Know your pace and stay focused on the goal.',label:'Projected units',value:17.2}
+  ];
+  let current=-1,scheduled=false;
+  function setStage(i){if(i===current)return;current=i;steps.forEach((s,j)=>s.classList.toggle('active',j===i));const x=stage[i];document.getElementById('screenMode').textContent=x.tag;document.getElementById('screenTitle').textContent=x.title;document.getElementById('screenSubtitle').textContent=x.sub;document.getElementById('screenMetricLabel').textContent=x.label;document.getElementById('screenMetric').textContent=x.value;}
+  function clamp(v){return Math.min(1,Math.max(0,v))}
+  function update(){scheduled=false;const vh=window.innerHeight;const hero=document.getElementById('heroVisual').getBoundingClientRect();const h=clamp((vh-hero.top)/(vh+hero.height));heroBars.forEach((b,i)=>{b.style.transform=`scaleY(${Math.max(.06,Math.min(1,.13+h*.93-i*.009))})`});document.getElementById('heroFloat').style.setProperty('--float-y',(-20*h).toFixed(1)+'px');
+    let chosen=0;let best=Infinity;steps.forEach((s,i)=>{const r=s.getBoundingClientRect();const d=Math.abs(r.top + r.height*.4 - vh*.52);if(d<best){best=d;chosen=i}});setStage(chosen);
+    const r=story.getBoundingClientRect();const p=clamp((vh*.4-r.top)/Math.max(1,r.height-vh*.65));document.getElementById('storyProgress').style.width=(p*100).toFixed(1)+'%';storyBars.forEach((b,i)=>{b.style.transform=`scaleY(${Math.max(.03,Math.min(1,p*1.42+.08-i*.018))})`});}
+  function schedule(){if(document.body.classList.contains("ez-landing-mode") && !scheduled){scheduled=true;requestAnimationFrame(update)}}
+  window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);schedule();
+})();
+</script>
 </body>
 </html>
