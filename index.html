@@ -2417,8 +2417,9 @@
     @media (max-width:600px) { .command-center{gap:10px}.command-hero{padding:19px;border-radius:20px}.command-metrics{grid-template-columns:1fr 1fr;gap:8px}.metric-card{padding:14px}.metric-value{font-size:26px}.command-card{padding:15px;border-radius:18px}.task-form{grid-template-columns:1fr}.task-add{min-height:43px}.performance-chart{gap:3px;height:210px;min-width:780px}.perf-col{height:206px}.perf-bar-zone{height:138px}.priority-item,.delivery-item{align-items:flex-start}.command-card-head{align-items:flex-start} }
 
   </style>
+  <link rel="stylesheet" href="/ezdealtrack-modern-v3.css" />
 </head>
-<body>
+<body class="ez-v3-app">
   <main class="shell">
     <header class="topbar">
       <div class="brand-wrap">
@@ -2583,6 +2584,12 @@
     </section>
 
     <section class="dashboard hidden" id="appView">
+      <nav class="workspace-tabs" aria-label="Workspace sections">
+        <a href="#commandCenter">Overview</a>
+        <a href="#dealEditorSection">Add / Edit Deal</a>
+        <a href="#soldDealsSection">Sold Deals</a>
+      </nav>
+
 
       <section class="command-center" id="commandCenter">
         <section class="command-hero">
@@ -2755,7 +2762,7 @@
         </div>
       </section>
 
-      <section class="panel">
+      <section class="panel" id="soldDealsSection">
         <div class="panel-head">
           <div>
             <h2>Sold Deals</h2>
