@@ -292,3 +292,61 @@ body.ez-landing-mode .landing-v4 .ez-auth-close svg {
   stroke-width:2.15;
   stroke-linecap:round;
 }
+
+
+/* v4 contrast + side reveal refinement: public pre-login marketing only */
+body.ez-landing-mode .landing-v4 .features .section-heading h2 {
+  color: #152522 !important;
+  font-weight: 820;
+}
+body.ez-landing-mode .landing-v4 .features .section-heading p {
+  color: #586d63 !important;
+}
+body.ez-landing-mode .landing-v4 .features {
+  overflow-x: clip;
+}
+body.ez-landing-mode .landing-v4 .feature-card.reveal {
+  opacity: 0;
+  filter: blur(2px);
+  transform: translate3d(0, 32px, 0);
+  transition:
+    opacity 780ms cubic-bezier(.22,1,.36,1),
+    transform 880ms cubic-bezier(.22,1,.36,1),
+    filter 780ms cubic-bezier(.22,1,.36,1),
+    border-color 200ms ease,
+    box-shadow 300ms ease;
+}
+@media (min-width: 769px) {
+  body.ez-landing-mode .landing-v4 .feature-card.reveal:nth-child(odd) {
+    transform: translate3d(-54px, 10px, 0);
+  }
+  body.ez-landing-mode .landing-v4 .feature-card.reveal:nth-child(even) {
+    transform: translate3d(54px, 10px, 0);
+  }
+}
+body.ez-landing-mode .landing-v4 .feature-card.reveal.visible {
+  opacity: 1;
+  filter: none;
+  transform: translate3d(0, 0, 0);
+}
+body.ez-landing-mode .landing-v4 .feature-card.reveal:nth-child(2) { transition-delay: 90ms; }
+body.ez-landing-mode .landing-v4 .feature-card.reveal:nth-child(3) { transition-delay: 180ms; }
+body.ez-landing-mode .landing-v4 .feature-card.reveal:nth-child(4) { transition-delay: 270ms; }
+@media (max-width: 768px) {
+  body.ez-landing-mode .landing-v4 .feature-card.reveal:nth-child(n) {
+    transform: translate3d(0, 26px, 0);
+    transition-delay: 0ms;
+  }
+  body.ez-landing-mode .landing-v4 .feature-card.reveal.visible {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.ez-landing-mode .landing-v4 .feature-card.reveal,
+  body.ez-landing-mode .landing-v4 .feature-card.reveal.visible {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
